@@ -36,18 +36,21 @@ if (isset($_POST['rauti'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sodinimas</title>
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
 <a class="link" href="index.html">Atgal</a>
-<h1>Agurkų sodas</h1>
-<h3>Sodinimas</h3>
+<!-- <h1>Agurkų sodas</h1> -->
+<h3 class="plant-ttl">Sodinimas</h3>
     <form action="" method="post">
     <?php foreach($_SESSION['a'] as $agurkas): ?>
 
-    <div>
-    Agurkas nr. <?= $agurkas['id'] ?>
-    Agurkų: <?= $agurkas['agurkai'] ?>
-    <button type="submit" name="rauti" value="<?= $agurkas['id'] ?>">Išrauti</button>
+    <div class="planting">
+        <div class="cucumber">
+        Agurkas nr. <?= $agurkas['id'] ?>
+        Agurkų: <?= $agurkas['agurkai'] ?>
+        </div>
+        <button class="button" type="submit" name="rauti" value="<?= $agurkas['id'] ?>">Išrauti</button>
     </div>
 
     <?php endforeach ?>

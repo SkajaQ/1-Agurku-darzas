@@ -43,7 +43,7 @@ foreach($_SESSION['a'] as $index => &$agurkas) {
 </head>
 <body>
 <a class="link" href="index.html">Atgal</a>
-<h1>Agurkų sodas</h1>
+<!-- <h1>Agurkų sodas</h1> -->
 <h3>Skynimas</h3>
     <form action="" method="post">
     <?php 

@@ -6,15 +6,73 @@ body,
 body * {
     margin: 0;
     padding: 0;
+    height: 100%;
     vertical-align: top;
     box-sizing: border-box;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.title {
+.backgr {
     width: 100%;
+    background-image: url(../images/grass.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-position: center;
+    /* filter: blur(4px);
+    -webkit-filter: blur(4px); */
+}
+
+.title {
+    display: inline-block;
+    width: 100%;
+    padding: 50px;
+    font-size: 100px;
+    text-align: center;
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.mainlinks {
+    display: inline-block;
+    width: 100%;
+    padding: 50px;
+    color: black;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 200px;
 }
 
 .link {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.cucumber {
+    color: blueviolet;
+    height: 100%;
+    float: left;
+    background-image: url(../images/cucumber.jfif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    margin: 10px;
+}
+
+.button {
+    
+}
+
+.plant-ttl {
+    margin: 10px;
+    font-size: 35px;
+    color: darkgreen;
+}
+
+.planting {
+    display: inline-block;
+    float: left;
     width: 100%;
+    height: 100%;
 }

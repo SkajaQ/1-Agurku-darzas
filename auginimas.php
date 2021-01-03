@@ -25,7 +25,7 @@ if (isset($_POST['auginti'])) {
 </head>
 <body>
 <a class="link" href="index.html">Atgal</a>
-<h1>Agurkų sodas</h1>
+<!-- <h1>Agurkų sodas</h1> -->
 <h3>Auginimas</h3>
     <form action="" method="post">
     <?php foreach($_SESSION['a'] as $agurkas): ?>
