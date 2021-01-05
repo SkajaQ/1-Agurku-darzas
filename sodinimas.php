@@ -4,38 +4,48 @@ include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
 session_start();
 
-if (!isset($_SESSION['a'])) {
-    $_SESSION['a'] = [];
-    $_SESSION['agurku ID'] = 0;
+if (!isset($_SESSION['agurkai'])) {
+    $_SESSION['agurkai'] = [];
+    $_SESSION['darzovesID'] = 0;
+}
+if (!isset($_SESSION['pomidorai'])) {
+    $_SESSION['pomidorai'] = [];
 }
 
 // SODINIMO SCENARIJUS
-if (isset($_POST['sodinti'])) {
-    $_SESSION['a'][] = new Agurkas(++$_SESSION['agurku ID']);
+if (isset($_POST['sodintiAgurka'])) {
+    $_SESSION['agurkai'][] = new Agurkas(++$_SESSION['darzovesID']);
 
-    // $_SESSION['a'][] = [
-    //     'id' => ++$_SESSION['agurku ID'],
-    //     'agurkai' => 0
-    // ];
+    header('Location: http://localhost:3000/sodinimas.php');
+    exit;
+}
+if (isset($_POST['sodintiPomidora'])) {
+    $_SESSION['pomidorai'][] = new Pomidoras(++$_SESSION['darzovesID']);
+
     header('Location: http://localhost:3000/sodinimas.php');
     exit;
 }
 // ISROVIMO SCENARIJUS
-if (isset($_POST['rauti'])) {
+if (isset($_POST['rautiAgurka'])) {
 
-    foreach($_SESSION['a'] as $index => $agurkas) {
+    foreach($_SESSION['agurkai'] as $index => $agurkas) {
 
-        if ($_POST['rauti'] == $agurkas->getId()) {
-            unset($_SESSION['a'][$index]);
+        if ($_POST['rautiAgurka'] == $agurkas->getId()) {
+            unset($_SESSION['agurkai'][$index]);
             header('Location: http://localhost:3000/sodinimas.php');
             exit;
         }
+    }
+}
+if (isset($_POST['rautiPomidora'])) {
 
-        // if ($_POST['rauti'] == $agurkas['id']) {
-        //     unset($_SESSION['a'][$index]);
-        //     header('Location: http://localhost:3000/sodinimas.php');
-        //     exit;
-        // }
+    foreach($_SESSION['pomidorai'] as $index => $pomidoras) {
+
+        if ($_POST['rautiPomidora'] == $pomidoras->getId()) {
+            unset($_SESSION['pomidorai'][$index]);
+            header('Location: http://localhost:3000/sodinimas.php');
+            exit;
+        }
     }
 }
 ?>
@@ -55,21 +65,33 @@ if (isset($_POST['rauti'])) {
 <h3 class="plant-ttl">Sodinimas</h3>
 
     <form action="" method="post">
-    <?php
-    var_dump($_SESSION['a']);
-    foreach($_SESSION['a'] as $agurkas): ?>
+
+    <h1>Agurkai</h1>
+    <?php foreach($_SESSION['agurkai'] as $agurkas): ?>
         
     <div class="planting">
-
         <div class="cucumber">
         Agurkas nr. <?= $agurkas->getId() ?>
         Agurkų: <?= $agurkas->getKiekis() ?>
         </div>
-        <button class="button" type="submit" name="rauti" value="<?= $agurkas->getId() ?>">Išrauti</button>
+        <button class="button" type="submit" name="rautiAgurka" value="<?= $agurkas->getId() ?>">Išrauti agurka</button>
     </div>
-
     <?php endforeach ?>
-    <button type="submit" name="sodinti">SODINTI</button>
+    <button type="submit" name="sodintiAgurka">SODINTI AGURKA</button>
+
+    <h1>Pomidorai</h1>
+    <?php foreach($_SESSION['pomidorai'] as $pomidoras): ?>
+        
+        <div class="planting">
+            <div class="cucumber">
+            Pomidoro nr. <?= $pomidoras->getId() ?>
+            Pomidoru: <?= $pomidoras->getKiekis() ?>
+            </div>
+            <button class="button" type="submit" name="rautiPomidora" value="<?= $pomidoras->getId() ?>">Išrauti pomidora</button>
+        </div>
+        <?php endforeach ?>
+
+    <button type="submit" name="sodintiPomidora">SODINTI POMIDORA</button>
     </form>
 </body>
 </html>
