@@ -1,5 +1,7 @@
 <?php
+include __DIR__.'/Darzove.php';
 include __DIR__.'/Agurkas.php';
+include __DIR__.'/Pomidoras.php';
 session_start();
 
 if (!isset($_SESSION['a'])) {
