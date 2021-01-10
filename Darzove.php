@@ -21,9 +21,5 @@ class Darzove {
         $this->kiekis = $kiekis;
     }
 
-    public function auginti() {
-        return 0;
-    }
-
 }
 
