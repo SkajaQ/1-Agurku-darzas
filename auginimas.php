@@ -2,33 +2,11 @@
 include __DIR__.'/Darzove.php';
 include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
-session_start();
+include __DIR__.'/App.php';
 
-if (!isset($_SESSION['agurkai']) || !isset($_SESSION['pomidorai'])) {
-echo 'Nieko nera, pasodink ka nors.';
-//TODO: button to sodinimas, kai nera agurku
+App::begin();
+App::growing();
 
-    $_SESSION['agurkai'] = [];
-    $_SESSION['darzovesID'] = 0;
-}
-
-// AUGINIMO SCENARIJUS
-if (isset($_POST['augintiAgurkus'])) {
-    foreach($_SESSION['agurkai'] as $index => &$agurkas) {
-        $visasKiekis = $agurkas->getKiekis() + $_POST['kiekisAgurku'][$agurkas->getId()];
-        $agurkas->setKiekis($visasKiekis);
-    }
-    header('Location: http://localhost:3000/auginimas.php');
-    exit;
-}
-if (isset($_POST['augintiPomidorus'])) {
-    foreach($_SESSION['pomidorai'] as $index => &$pomidoras) {
-        $visasKiekis = $pomidoras->getKiekis() + $_POST['kiekisPomidoru'][$pomidoras->getId()];
-        $pomidoras->setKiekis($visasKiekis);
-    }
-    header('Location: http://localhost:3000/auginimas.php');
-    exit;
-}
 
 ?>
 <!DOCTYPE html>

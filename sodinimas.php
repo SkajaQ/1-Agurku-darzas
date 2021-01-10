@@ -2,52 +2,11 @@
 include __DIR__.'/Darzove.php';
 include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
-session_start();
+include __DIR__.'/App.php';
 
-if (!isset($_SESSION['agurkai'])) {
-    $_SESSION['agurkai'] = [];
-    $_SESSION['darzovesID'] = 0;
-}
-if (!isset($_SESSION['pomidorai'])) {
-    $_SESSION['pomidorai'] = [];
-}
+App::begin();
+App::planting();
 
-// SODINIMO SCENARIJUS
-if (isset($_POST['sodintiAgurka'])) {
-    $_SESSION['agurkai'][] = new Agurkas(++$_SESSION['darzovesID']);
-
-    header('Location: http://localhost:3000/sodinimas.php');
-    exit;
-}
-if (isset($_POST['sodintiPomidora'])) {
-    $_SESSION['pomidorai'][] = new Pomidoras(++$_SESSION['darzovesID']);
-
-    header('Location: http://localhost:3000/sodinimas.php');
-    exit;
-}
-// ISROVIMO SCENARIJUS
-if (isset($_POST['rautiAgurka'])) {
-
-    foreach($_SESSION['agurkai'] as $index => $agurkas) {
-
-        if ($_POST['rautiAgurka'] == $agurkas->getId()) {
-            unset($_SESSION['agurkai'][$index]);
-            header('Location: http://localhost:3000/sodinimas.php');
-            exit;
-        }
-    }
-}
-if (isset($_POST['rautiPomidora'])) {
-
-    foreach($_SESSION['pomidorai'] as $index => $pomidoras) {
-
-        if ($_POST['rautiPomidora'] == $pomidoras->getId()) {
-            unset($_SESSION['pomidorai'][$index]);
-            header('Location: http://localhost:3000/sodinimas.php');
-            exit;
-        }
-    }
-}
 ?>
 
 

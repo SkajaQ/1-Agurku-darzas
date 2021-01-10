@@ -2,68 +2,13 @@
 include __DIR__.'/Darzove.php';
 include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
-session_start();
+include __DIR__.'/App.php';
 
-if (!isset($_SESSION['agurkai']) || !isset($_SESSION['pomidorai'])) {
-    echo 'Nieko nera, pasodink ka nors.';
-    //TODO: button to sodinimas, kai nera agurku
-
-
-    $_SESSION['agurkai'] = [];
-    $_SESSION['darzovesID'] = 0;
-}
-
-// SKYNIMO SCENARIJUS
-if (isset($_POST['skintiDerliu'])) {
-    foreach($_SESSION['agurkai'] as $index => &$agurkas) {
-        $agurkas->setKiekis(0);
-    } 
-    foreach($_SESSION['pomidorai'] as $index => &$pomidoras) {
-        $pomidoras->setKiekis(0);
-    }
-    header('Location: http://localhost:3000/skynimas.php');
-    exit;
-}
-foreach($_SESSION['agurkai'] as $index => &$agurkas) {
-    $name = 'skintiAgurku' . $agurkas->getId();
-    $nameAll = 'skintiVisusAgurkus' . $agurkas->getId();
-
-    if (isset($_POST[$name])) {
-        $likoAgurku = $agurkas->getKiekis() - $_POST['kiekisSkintiAgurku' .$agurkas->getId()];
-        if ($likoAgurku < 0) {
-            $likoAgurku = 0;
-        }
-        $agurkas->setKiekis($likoAgurku);
-        header('Location: http://localhost:3000/skynimas.php');
-        exit;
-    }
-    if (isset($_POST[$nameAll])) {
-        $agurkas->setKiekis(0);
-        header('Location: http://localhost:3000/skynimas.php');
-        exit;
-    }
-}
-foreach($_SESSION['pomidorai'] as $index => &$pomidoras) {
-    $name = 'skintiPomidoru' . $pomidoras->getId();
-    $nameAll = 'skintiVisusPomidorus' . $pomidoras->getId();
-
-    if (isset($_POST[$name])) {
-        $likoAPomidoru = $pomidoras->getKiekis() - $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()];
-        if ($likoAPomidoru < 0) {
-            $likoAPomidoru = 0;
-        }
-        $pomidoras->setKiekis($likoAPomidoru);
-        header('Location: http://localhost:3000/skynimas.php');
-        exit;
-    }
-    if (isset($_POST[$nameAll])) {
-        $pomidoras->setKiekis(0);
-        header('Location: http://localhost:3000/skynimas.php');
-        exit;
-    }
-}
+App::begin();
+App::harvesting();
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
