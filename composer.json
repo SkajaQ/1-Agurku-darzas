@@ -1,0 +1,13 @@
+{
+    "name": "app/agurkai",
+    "description": "lesson",
+    "autoload": {
+        "psr-4": {
+            "": ""
+        }
+    },
+    "require": {
+        "ramsey/uuid": "^4.1"
+    }
+    
+}

@@ -1,4 +1,5 @@
 <?php
+include __DIR__.'/vendor/autoload.php';
 include __DIR__.'/Darzove.php';
 include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
@@ -8,7 +9,6 @@ App::begin();
 App::planting();
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
