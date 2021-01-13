@@ -5,6 +5,7 @@ include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
 include __DIR__.'/App.php';
 
+
 App::begin();
 App::planting();
 
@@ -19,15 +20,14 @@ App::planting();
     <!-- <link rel="stylesheet" href="./main.css"> -->
 </head>
 <body>
-<a class="link" href="index.html">Atgal</a>
+<a class="link" href="index.php">Atgal</a>
 <!-- <h1>Agurkų sodas</h1> -->
 <h3 class="plant-ttl">Sodinimas</h3>
 
     <form action="" method="post">
 
     <h1>Agurkai</h1>
-    <?php foreach($_SESSION['agurkai'] as $agurkas): ?>
-        
+    <?php foreach(App::getRepository()::getAllByType(Agurkas::class) as $id => &$agurkas): ?>
     <div class="planting">
         <div class="cucumber">
         Agurkas nr. <?= $agurkas->getId() ?>
@@ -39,8 +39,7 @@ App::planting();
     <button type="submit" name="sodintiAgurka">SODINTI AGURKA</button>
 
     <h1>Pomidorai</h1>
-    <?php foreach($_SESSION['pomidorai'] as $pomidoras): ?>
-        
+    <?php foreach(App::getRepository()->getAllByType(Pomidoras::class) as &$pomidoras): ?>
         <div class="planting">
             <div class="cucumber">
             Pomidoro nr. <?= $pomidoras->getId() ?>

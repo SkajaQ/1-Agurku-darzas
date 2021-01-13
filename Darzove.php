@@ -1,5 +1,5 @@
 <?php
-class Darzove {
+abstract class Darzove {
     private int $id;
     private int $kiekis;
 
@@ -20,6 +20,8 @@ class Darzove {
     public function setKiekis(int $kiekis) {
         $this->kiekis = $kiekis;
     }
+
+    abstract protected function auginti();
 
 }
 

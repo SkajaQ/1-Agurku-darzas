@@ -8,8 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'Agurkas' => $baseDir . '/Agurkas.php',
     'App' => $baseDir . '/App.php',
-    'Augalas' => $baseDir . '/Augalas.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Darzove' => $baseDir . '/Darzove.php',
+    'GardenRepository' => $baseDir . '/GardenRepository.php',
+    'InMemoryRepository' => $baseDir . '/InMemoryRepository.php',
     'Pomidoras' => $baseDir . '/Pomidoras.php',
+    'Store' => $baseDir . '/Store.php',
 );

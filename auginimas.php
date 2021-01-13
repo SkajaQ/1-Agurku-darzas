@@ -17,12 +17,12 @@ App::growing();
     <title>Auginimas</title>
 </head>
 <body>
-<a class="link" href="index.html">Atgal</a>
+<a class="link" href="index.php">Atgal</a>
 <!-- <h1>Agurkų sodas</h1> -->
 <h3>Auginimas</h3>
     <form action="" method="post">
     <h1>Agurkai</h1>
-    <?php foreach($_SESSION['agurkai'] as $agurkas): ?>
+    <?php foreach(App::getRepository().getAllByType(Agurkas::class) as $agurkas): ?>
     <div>
     <?php $kiekisAgurku = $agurkas->auginti() ?>
     <h1 style="display:inline;"><?= $agurkas->getKiekis() ?></h1>
@@ -34,7 +34,7 @@ App::growing();
     <button type="submit" name="augintiAgurkus">Auginti agurkus</button>
 
     <h1>Pomidorai</h1>
-    <?php foreach($_SESSION['pomidorai'] as $pomidoras): ?>
+    <?php foreach(App::getRepository().getAllByType(Pomidoras::class) as $pomidoras): ?>
     <div>
     <?php $kiekisPomidoru = $pomidoras->auginti() ?>
     <h1 style="display:inline;"><?= $pomidoras->getKiekis() ?></h1>

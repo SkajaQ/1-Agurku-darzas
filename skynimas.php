@@ -16,12 +16,12 @@ App::harvesting();
     <title>Skynimas</title>
 </head>
 <body>
-<a class="link" href="index.html">Atgal</a>
+<a class="link" href="index.php">Atgal</a>
 <!-- <h1>Agurkų sodas</h1> -->
 <h3>Skynimas</h3>
     <form action="" method="post">
     <h1>Agurkai</h1>
-    <?php foreach($_SESSION['agurkai'] as $id => &$agurkas): ?>
+    <?php foreach(App::getRepository().getAllByType(Agurkas::class) as $id => &$agurkas): ?>
     <div>
         Agurkas Nr. <?= $agurkas->getId() ?>
         <input type="text" name="kiekisSkintiAgurku<?= $agurkas->getId() ?>" value="<?= $_POST['kiekisSkintiAgurku' .$agurkas->getId()] ?? '' ?>"><br>
@@ -32,7 +32,7 @@ App::harvesting();
     <?php endforeach ?>
 
     <h1>Pomidorai</h1>
-    <?php foreach($_SESSION['pomidorai'] as $id => &$pomidoras): ?>
+    <?php foreach(App::getRepository().getAllByType(Pomidoras::class) as $id => &$pomidoras): ?>
     <div>
         Pomidoras Nr. <?= $pomidoras->getId() ?>
         <input type="text" name="kiekisSkintiPomidoru<?= $pomidoras->getId() ?>" value="<?= $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()] ?? '' ?>"><br>

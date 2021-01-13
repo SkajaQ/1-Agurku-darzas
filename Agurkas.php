@@ -1,7 +1,6 @@
 <?php
-include __DIR__.'/Augalas.php';
 
-class Agurkas extends Darzove implements Augalas {
+class Agurkas extends Darzove {
     public function auginti() {
         return rand(2, 9);
     }
