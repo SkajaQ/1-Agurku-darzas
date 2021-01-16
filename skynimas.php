@@ -1,4 +1,5 @@
 <?php
+include __DIR__.'/vendor/autoload.php';
 include __DIR__.'/Darzove.php';
 include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
@@ -21,7 +22,7 @@ App::harvesting();
 <h3>Skynimas</h3>
     <form action="" method="post">
     <h1>Agurkai</h1>
-    <?php foreach(App::getRepository().getAllByType(Agurkas::class) as $id => &$agurkas): ?>
+    <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
     <div>
         Agurkas Nr. <?= $agurkas->getId() ?>
         <input type="text" name="kiekisSkintiAgurku<?= $agurkas->getId() ?>" value="<?= $_POST['kiekisSkintiAgurku' .$agurkas->getId()] ?? '' ?>"><br>
@@ -32,7 +33,7 @@ App::harvesting();
     <?php endforeach ?>
 
     <h1>Pomidorai</h1>
-    <?php foreach(App::getRepository().getAllByType(Pomidoras::class) as $id => &$pomidoras): ?>
+    <?php foreach(App::getRepository()->getAllByType('pomidoras') as $id => &$pomidoras): ?>
     <div>
         Pomidoras Nr. <?= $pomidoras->getId() ?>
         <input type="text" name="kiekisSkintiPomidoru<?= $pomidoras->getId() ?>" value="<?= $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()] ?? '' ?>"><br>

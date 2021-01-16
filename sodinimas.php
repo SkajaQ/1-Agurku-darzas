@@ -5,10 +5,14 @@ include __DIR__.'/Agurkas.php';
 include __DIR__.'/Pomidoras.php';
 include __DIR__.'/App.php';
 
-
 App::begin();
-App::planting();
 
+if (isset($_POST['sodintiAgurka']) || isset($_POST['sodintiPomidora'])) {
+    App::planting();
+}
+if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
+    App::planting();
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +31,7 @@ App::planting();
     <form action="" method="post">
 
     <h1>Agurkai</h1>
-    <?php foreach(App::getRepository()::getAllByType(Agurkas::class) as $id => &$agurkas): ?>
+    <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
     <div class="planting">
         <div class="cucumber">
         Agurkas nr. <?= $agurkas->getId() ?>
@@ -39,7 +43,7 @@ App::planting();
     <button type="submit" name="sodintiAgurka">SODINTI AGURKA</button>
 
     <h1>Pomidorai</h1>
-    <?php foreach(App::getRepository()->getAllByType(Pomidoras::class) as &$pomidoras): ?>
+    <?php foreach(App::getRepository()->getAllByType('pomidoras') as &$pomidoras): ?>
         <div class="planting">
             <div class="cucumber">
             Pomidoro nr. <?= $pomidoras->getId() ?>
