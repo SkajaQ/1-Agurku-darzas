@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit956cb82d9dbc02ec93df49498165254a
+class ComposerStaticInita2bba1af51dc14eb0f610d916f151225
 {
     public static $fallbackDirsPsr4 = array (
         0 => __DIR__ . '/../..' . '/',
@@ -15,17 +15,17 @@ class ComposerStaticInit956cb82d9dbc02ec93df49498165254a
         'App' => __DIR__ . '/../..' . '/App.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Darzove' => __DIR__ . '/../..' . '/Darzove.php',
+        'FileRepository' => __DIR__ . '/../..' . '/FileRepository.php',
         'GardenRepository' => __DIR__ . '/../..' . '/GardenRepository.php',
-        'InMemoryRepository' => __DIR__ . '/../..' . '/InMemoryRepository.php',
         'Pomidoras' => __DIR__ . '/../..' . '/Pomidoras.php',
-        'Store' => __DIR__ . '/../..' . '/Store.php',
+        'SessionRepository' => __DIR__ . '/../..' . '/SessionRepository.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInit956cb82d9dbc02ec93df49498165254a::$fallbackDirsPsr4;
-            $loader->classMap = ComposerStaticInit956cb82d9dbc02ec93df49498165254a::$classMap;
+            $loader->fallbackDirsPsr4 = ComposerStaticInita2bba1af51dc14eb0f610d916f151225::$fallbackDirsPsr4;
+            $loader->classMap = ComposerStaticInita2bba1af51dc14eb0f610d916f151225::$classMap;
 
         }, null, ClassLoader::class);
     }

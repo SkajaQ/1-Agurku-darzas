@@ -2,6 +2,16 @@
 
 class SessionRepository implements GardenRepository {
 
+    public function __construct() {
+        if (!isset($_SESSION['agurkas'])) {
+            $_SESSION['agurkas'] = [];
+            $_SESSION['lastId'] = 1;
+        }
+        if (!isset($_SESSION['pomidoras'])) {
+            $_SESSION['pomidoras'] = [];
+        }
+    }
+
     public function save(Darzove $darzove) {
     
         if ($darzove instanceof Agurkas) {

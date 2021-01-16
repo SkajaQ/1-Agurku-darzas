@@ -10,14 +10,6 @@ class App {
         if (!isset($repository)) {
             self::$repository = new FileRepository();
         }
-
-        // if (!isset($_SESSION['agurkas'])) {
-        //     $_SESSION['agurkas'] = [];
-        //     $_SESSION['lastId'] = 1;
-        // }
-        // if (!isset($_SESSION['pomidoras'])) {
-        //     $_SESSION['pomidoras'] = [];
-        // }
     }
 
     public static function getRepository() {

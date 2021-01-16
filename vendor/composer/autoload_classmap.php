@@ -10,8 +10,8 @@ return array(
     'App' => $baseDir . '/App.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Darzove' => $baseDir . '/Darzove.php',
+    'FileRepository' => $baseDir . '/FileRepository.php',
     'GardenRepository' => $baseDir . '/GardenRepository.php',
-    'InMemoryRepository' => $baseDir . '/InMemoryRepository.php',
     'Pomidoras' => $baseDir . '/Pomidoras.php',
-    'Store' => $baseDir . '/Store.php',
+    'SessionRepository' => $baseDir . '/SessionRepository.php',
 );
