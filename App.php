@@ -8,16 +8,16 @@ class App {
         session_start();
         // session_destroy();
         if (!isset($repository)) {
-            self::$repository = new SessionRepository();
+            self::$repository = new FileRepository();
         }
 
-        if (!isset($_SESSION['agurkas'])) {
-            $_SESSION['agurkas'] = [];
-            $_SESSION['lastId'] = 1;
-        }
-        if (!isset($_SESSION['pomidoras'])) {
-            $_SESSION['pomidoras'] = [];
-        }
+        // if (!isset($_SESSION['agurkas'])) {
+        //     $_SESSION['agurkas'] = [];
+        //     $_SESSION['lastId'] = 1;
+        // }
+        // if (!isset($_SESSION['pomidoras'])) {
+        //     $_SESSION['pomidoras'] = [];
+        // }
     }
 
     public static function getRepository() {

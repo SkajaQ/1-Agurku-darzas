@@ -2,7 +2,7 @@
 
 class Store {
 
-    private const PATH = DIR.'/data/';
+    private const PATH = __DIR__.'/data/';
 
     private $fileName = 'garden';
     private $data;
