@@ -80,7 +80,6 @@ class App {
     }
 
     public static function growing() {
-
         // AUGINIMO SCENARIJUS
         if (isset($_POST['augintiAgurkus'])) {
             foreach(self::$repository->getAll() as $id => &$agurkas) {
@@ -174,45 +173,29 @@ class App {
     }
 
     public static function loadCurrencies() {
-        
         include __DIR__ . '/Currency API/Cache.php';
         $DATA = new Cache();
-
         $answer = $DATA->get();
 
         $_SESSION['method'] = false === $answer ? 'API' : 'CACHE';
-
 
         if (false === $answer) {
             // API START
 
             $ch = curl_init();
 
-            curl_setopt(
-            $ch, CURLOPT_URL, 
-            'https://api.exchangeratesapi.io/latest'
-            );
+            curl_setopt($ch, CURLOPT_URL, 'https://api.exchangeratesapi.io/latest');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
             $answer = curl_exec($ch); // siuntimas ir laukimas atsakymo
 
             $answer = json_decode($answer);
-            
             $DATA->set($answer); // <---- uzkesinam naujus duomenis
-
             // API END
             
-        // }
         $_SESSION['rates'] = $answer->rates;
-        
-        // $a = $_SESSION['rates']->KRW;
-
-        
         }
 
-
-
     }
-
 
 }

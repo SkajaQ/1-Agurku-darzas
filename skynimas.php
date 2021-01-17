@@ -31,23 +31,22 @@ $krwRate = $_SESSION['rates']->KRW;
     <div>
         Agurkas Nr. <?= $agurkas->getId() ?>
         <input type="text" name="kiekisSkintiAgurku<?= $agurkas->getId() ?>" value="<?= $_POST['kiekisSkintiAgurku' .$agurkas->getId()] ?? '' ?>">
-        <input type="text" name="eurPrice" value="<?=$agurkas->getPrice() ?>"> 
-        <input type="text" value="<?= round(($agurkas->getPrice()*$plnRate), 2) ?>">
-        <input type="text" value="<?=$agurkas->getPrice()*$krwRate ?>">
-
+        <!-- <input type="text" name="eurPrice" value="<?=$agurkas->getPrice() ?>">  -->
+        <!-- <input type="text" value="<?= round(($agurkas->getPrice()*$plnRate), 2) ?>"> -->
+        <!-- <input type="text" value="<?=$agurkas->getPrice()*$krwRate ?>"> -->
         <br>
-
         <button type="submit" name="skintiAgurku<?= $agurkas->getId() ?>">Skinti</button>
         <button type="submit" name="skintiVisusAgurkus<?= $agurkas->getId() ?>">Skinti visus nuo krumo</button>
         <h1 style="display:inline;"><?= $agurkas->getKiekis() ?></h1>
     </div>
     <?php endforeach ?>
 
-    <h1>Pomidorai</h1>
+    <h1>Pomidorai - Kaina: <?= Pomidoras::PRICE?> eur, <?= round((Pomidoras::PRICE*$plnRate), 2) ?> pln, <?= Pomidoras::PRICE*$krwRate ?> krw </h1>
     <?php foreach(App::getRepository()->getAllByType('pomidoras') as $id => &$pomidoras): ?>
     <div>
         Pomidoras Nr. <?= $pomidoras->getId() ?>
-        <input type="text" name="kiekisSkintiPomidoru<?= $pomidoras->getId() ?>" value="<?= $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()] ?? '' ?>"><br>
+        <input type="text" name="kiekisSkintiPomidoru<?= $pomidoras->getId() ?>" value="<?= $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()] ?? '' ?>">
+        <br>
         <button type="submit" name="skintiPomidoru<?= $pomidoras->getId() ?>">Skinti</button>
         <button type="submit" name="skintiVisusPomidorus<?= $pomidoras->getId() ?>">Skinti visus nuo krumo</button>
         <h1 style="display:inline;"><?= $pomidoras->getKiekis() ?></h1>
