@@ -1,0 +1,22 @@
+.plant-main {
+    margin-left: 100px;
+    background-color: lightgreen;
+}
+
+.plant-ttl {
+    text-align: center;
+    margin: 20px;
+    font-size: 35px;
+    color: darkgreen;
+}
+
+.planting {
+    display: inline-block;
+    float: left;
+    width: 100%;
+}
+
+.sodinti {
+    color: seagreen;
+    font-weight: bold;
+}

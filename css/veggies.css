@@ -1,0 +1,21 @@
+.cucumber {
+    color: rgb(17, 107, 39);
+    height: 40px;
+    float: left;
+    background-image: url("./images/cucumber.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    margin: 10px;
+}
+
+.tomato {
+    color: rgb(99, 20, 173);
+    height: 40px;
+    float: left;
+    background-image: url("./images/tomato.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    margin: 10px;
+}

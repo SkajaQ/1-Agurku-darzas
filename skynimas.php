@@ -19,6 +19,11 @@ $krwRate = $_SESSION['rates']->KRW;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skynimas</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./css/growing.css">
+    <link rel="stylesheet" href="./css/veggies.css">
+    <link rel="stylesheet" href="./css/planting.css">
+    <link rel="stylesheet" href="./css/button.css">
 </head>
 <body>
 <a class="link" href="index.php">Atgal</a>

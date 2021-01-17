@@ -1,0 +1,114 @@
+/* red btn */
+.btn {
+    display: inline-block;
+    background-color: #f34236;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(238, 238, 238);
+    border-radius: 3px;
+    border: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-decoration: none;
+    margin: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 1px 1px 15px 1px #13131344;
+    border: 1px solid  #f34236;
+}
+
+.btn:hover {
+    box-shadow: 3px 10px 15px 3px #d62c2c46;
+    background-color: rgb(27, 27, 27);
+    color: rgb(238, 238, 238);
+    transition-duration: 0.9s;
+    border: 1px solid  rgb(27, 27, 27);
+}
+
+.btn-cucumber {
+    display: inline-block;
+    background-color: #06a865;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(238, 238, 238);
+    border-radius: 3px;
+    border: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-decoration: none;
+    margin: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 1px 1px 15px 1px #13131344;
+    border: 1px solid  #f34236;
+}
+
+.btn-cucumber:hover {
+    box-shadow: 3px 10px 15px 3px #d62c2c46;
+    background-color: rgb(27, 27, 27);
+    color: rgb(238, 238, 238);
+    transition-duration: 0.9s;
+    border: 1px solid  rgb(27, 27, 27);
+}
+
+.btn2 {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid  rgb(238, 238, 238);
+    color:   #f34236;
+    background-color:  rgb(238, 238, 238);
+    border-radius: 3px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-decoration: none;
+    margin: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 1px 1px 15px 1px #13131344;;
+}
+
+.btn2:hover {
+    box-shadow: 3px 10px 15px 3px rgb(243, 243, 243);
+    background-color: #f34236;
+    color: rgb(238, 238, 238);
+    transition-duration: 0.9s;
+    box-shadow: 3px 10px 15px 3px #4d4d4d62;
+}
+
+.btn2-cucumber {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid  rgb(238, 238, 238);
+    color: #06a865;
+    background-color: rgb(238, 238, 238);
+    border-radius: 3px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-decoration: none;
+    margin: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 1px 1px 15px 1px #13131344;;
+}
+
+.btn2-cucumber:hover {
+    box-shadow: 3px 10px 15px 3px rgb(243, 243, 243);
+    background-color: #06a865;
+    color: rgb(238, 238, 238);
+    transition-duration: 0.9s;
+    box-shadow: 3px 10px 15px 3px #4d4d4d62;
+}

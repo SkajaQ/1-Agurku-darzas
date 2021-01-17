@@ -21,10 +21,14 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sodinimas</title>
-    <!-- <link rel="stylesheet" href="./main.css"> -->
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./css/growing.css">
+    <link rel="stylesheet" href="./css/veggies.css">
+    <link rel="stylesheet" href="./css/planting.css">
+    <link rel="stylesheet" href="./css/button.css">
 </head>
-<body>
-<a class="link" href="index.php">Atgal</a>
+<body class="plant-main">
+<a class="link btn" href="index.php">Atgal</a>
 <!-- <h1>Agurkų sodas</h1> -->
 <h3 class="plant-ttl">Sodinimas</h3>
 
@@ -32,28 +36,26 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
 
     <h1>Agurkai</h1>
     <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
-    <div class="planting">
-        <div class="cucumber">
-        Agurkas nr. <?= $agurkas->getId() ?>
-        Agurkų: <?= $agurkas->getKiekis() ?>
-        </div>
-        <button class="button" type="submit" name="rautiAgurka" value="<?= $agurkas->getId() ?>">Išrauti agurka</button>
+    <div class="planting cucumber">
+        <img src="./images/cucumber.jpg" alt="" class="cucumber">
+        bush nr. <?= $agurkas->getId() ?>
+        Total: <?= $agurkas->getKiekis() ?>
+        <button class="button sodinti" type="submit" name="rautiAgurka" value="<?= $agurkas->getId() ?>">Dig Out</button>
     </div>
     <?php endforeach ?>
-    <button type="submit" name="sodintiAgurka">SODINTI AGURKA</button>
+    <button type="submit" name="sodintiAgurka" class="sodinti btn2-cucumber">Plant Cucumber</button>
 
     <h1>Pomidorai</h1>
     <?php foreach(App::getRepository()->getAllByType('pomidoras') as &$pomidoras): ?>
-        <div class="planting">
-            <div class="cucumber">
-            Pomidoro nr. <?= $pomidoras->getId() ?>
-            Pomidoru: <?= $pomidoras->getKiekis() ?>
-            </div>
-            <button class="button" type="submit" name="rautiPomidora" value="<?= $pomidoras->getId() ?>">Išrauti pomidora</button>
+        <div class="planting tomato">
+        <img src="./images/tomato.jpg" alt="" class="tomato">
+            bush nr. <?= $pomidoras->getId() ?>
+            Total: <?= $pomidoras->getKiekis() ?>
+            <button class="button sodinti" type="submit" name="rautiPomidora" value="<?= $pomidoras->getId() ?>">Dig Out</button>
         </div>
         <?php endforeach ?>
 
-    <button type="submit" name="sodintiPomidora">SODINTI POMIDORA</button>
+    <button type="submit" name="sodintiPomidora" class="sodinti btn2">Plant Tomato</button>
     </form>
 </body>
 </html>
