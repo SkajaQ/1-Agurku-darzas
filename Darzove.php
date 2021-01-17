@@ -23,5 +23,7 @@ abstract class Darzove {
 
     abstract protected function auginti();
 
+    abstract protected function getPrice();
+
 }
 

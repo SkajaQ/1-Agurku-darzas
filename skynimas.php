@@ -7,6 +7,10 @@ include __DIR__.'/App.php';
 
 App::begin();
 App::harvesting();
+App::loadCurrencies();
+
+$plnRate = $_SESSION['rates']->PLN;
+$krwRate = $_SESSION['rates']->KRW;
 
 ?>
 <!DOCTYPE html>
@@ -21,11 +25,18 @@ App::harvesting();
 <!-- <h1>Agurkų sodas</h1> -->
 <h3>Skynimas</h3>
     <form action="" method="post">
-    <h1>Agurkai</h1>
+    <h1>Agurkai - Kaina: <?= Agurkas::PRICE?> eur, <?= round((Agurkas::PRICE*$plnRate), 2) ?> pln, <?= Agurkas::PRICE*$krwRate ?> krw </h1> 
+
     <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
     <div>
         Agurkas Nr. <?= $agurkas->getId() ?>
-        <input type="text" name="kiekisSkintiAgurku<?= $agurkas->getId() ?>" value="<?= $_POST['kiekisSkintiAgurku' .$agurkas->getId()] ?? '' ?>"><br>
+        <input type="text" name="kiekisSkintiAgurku<?= $agurkas->getId() ?>" value="<?= $_POST['kiekisSkintiAgurku' .$agurkas->getId()] ?? '' ?>">
+        <input type="text" name="eurPrice" value="<?=$agurkas->getPrice() ?>"> 
+        <input type="text" value="<?= round(($agurkas->getPrice()*$plnRate), 2) ?>">
+        <input type="text" value="<?=$agurkas->getPrice()*$krwRate ?>">
+
+        <br>
+
         <button type="submit" name="skintiAgurku<?= $agurkas->getId() ?>">Skinti</button>
         <button type="submit" name="skintiVisusAgurkus<?= $agurkas->getId() ?>">Skinti visus nuo krumo</button>
         <h1 style="display:inline;"><?= $agurkas->getKiekis() ?></h1>
