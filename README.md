@@ -7,7 +7,7 @@
 ## Project features
 - HTML, CSS, PHP
 - multi-page
-- database fundamentals (//to do)
+- database fundamentals
 
 ## Authors
 [Mažena Zigmund](https://github.com/skajaq)

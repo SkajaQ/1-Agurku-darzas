@@ -8,7 +8,7 @@ class App {
         session_start();
         // session_destroy();
         if (!isset($repository)) {
-            self::$repository = new FileRepository();
+            self::$repository = new DBRepository();
         }
     }
 
@@ -85,7 +85,10 @@ class App {
             foreach(self::$repository->getAll() as $id => &$agurkas) {
                 $visasKiekis = $agurkas->getKiekis() + $_POST['kiekisAgurku'][$agurkas->getId()];
                 $agurkas->setKiekis($visasKiekis);
+                self::$repository->update($agurkas);
             }
+
+
             // foreach($_SESSION['agurkas'] as $id => &$agurkas) {
             //     $visasKiekis = $agurkas->getKiekis() + $_POST['kiekisAgurku'][$agurkas->getId()];
             //     $agurkas->setKiekis($visasKiekis);
@@ -97,6 +100,7 @@ class App {
             foreach(self::$repository->getAll() as $id => &$pomidoras) {
                 $visasKiekis = $pomidoras->getKiekis() + $_POST['kiekisPomidoru'][$pomidoras->getId()];
                 $pomidoras->setKiekis($visasKiekis);
+                self::$repository->update($pomidoras);
             }
             // foreach($_SESSION['pomidoras'] as $id => &$pomidoras) {
             //     $visasKiekis = $pomidoras->getKiekis() + $_POST['kiekisPomidoru'][$pomidoras->getId()];
@@ -112,6 +116,7 @@ class App {
         if (isset($_POST['skintiDerliu'])) {
             foreach (self::$repository->getAll() as $id => &$darzove) {
                 $darzove->setKiekis(0);
+                self::$repository->update($darzove);
             }
 
             // foreach($_SESSION['agurkas'] as $id => &$agurkas) {
@@ -133,11 +138,13 @@ class App {
                     $likoAgurku = 0;
                 }
                 $agurkas->setKiekis($likoAgurku);
+                self::$repository->update($agurkas);
                 header('Location: http://localhost:3000/skynimas.php');
                 exit;
             }
             if (isset($_POST[$nameAll])) {
                 $agurkas->setKiekis(0);
+                self::$repository->update($agurkas);
                 header('Location: http://localhost:3000/skynimas.php');
                 exit;
             }
@@ -152,11 +159,13 @@ class App {
                     $likoAPomidoru = 0;
                 }
                 $pomidoras->setKiekis($likoAPomidoru);
+                self::$repository->update($pomidoras);
                 header('Location: http://localhost:3000/skynimas.php');
                 exit;
             }
             if (isset($_POST[$nameAll])) {
                 $pomidoras->setKiekis(0);
+                self::$repository->update($pomidoras);
                 header('Location: http://localhost:3000/skynimas.php');
                 exit;
             }

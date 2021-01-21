@@ -13,4 +13,6 @@ interface GardenRepository {
     
     public function delete(int $id);
 
+    public function update(Darzove $darzove);
+
 }

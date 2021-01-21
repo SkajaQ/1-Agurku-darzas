@@ -3,7 +3,7 @@
     "description": "lesson",
     "autoload": {
         "psr-4": {
-            "": ""
+            "\\": ""
         }
     },
     "require": {
