@@ -1,0 +1,8 @@
+.grow-main {
+    margin-left: 100px;
+    width: 100%;
+    background-image: url(../images/backs/back9.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-position: center;
+}

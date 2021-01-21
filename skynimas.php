@@ -1,8 +1,8 @@
 <?php
 include __DIR__.'/vendor/autoload.php';
-include __DIR__.'/Darzove.php';
-include __DIR__.'/Agurkas.php';
-include __DIR__.'/Pomidoras.php';
+include __DIR__.'/model/Darzove.php';
+include __DIR__.'/model/Agurkas.php';
+include __DIR__.'/model/Pomidoras.php';
 include __DIR__.'/App.php';
 
 App::begin();
@@ -19,16 +19,17 @@ $krwRate = $_SESSION['rates']->KRW;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skynimas</title>
-    <link rel="stylesheet" href="./main.css">
-    <link rel="stylesheet" href="./css/growing.css">
-    <link rel="stylesheet" href="./css/veggies.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/planting.css">
+    <link rel="stylesheet" href="./css/growing.css">
+    <link rel="stylesheet" href="./css/harvesting.css">
+    <link rel="stylesheet" href="./css/veggies.css">
     <link rel="stylesheet" href="./css/button.css">
 </head>
-<body>
-<a class="link" href="index.php">Atgal</a>
+<body class="harv-main">
+<a class="link btn" href="index.php">Atgal</a>
 <!-- <h1>Agurkų sodas</h1> -->
-<h3>Skynimas</h3>
+<h3 class="plant-ttl">Skynimas</h3>
     <form action="" method="post">
     <h1>Agurkai - Kaina: <?= Agurkas::PRICE?> eur, <?= round((Agurkas::PRICE*$plnRate), 2) ?> pln, <?= round((Agurkas::PRICE*$krwRate), 2) ?> krw </h1> 
 

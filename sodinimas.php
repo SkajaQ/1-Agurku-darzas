@@ -1,8 +1,8 @@
 <?php
 include __DIR__.'/vendor/autoload.php';
-include __DIR__.'/Darzove.php';
-include __DIR__.'/Agurkas.php';
-include __DIR__.'/Pomidoras.php';
+include __DIR__.'/model/Darzove.php';
+include __DIR__.'/model/Agurkas.php';
+include __DIR__.'/model/Pomidoras.php';
 include __DIR__.'/App.php';
 
 App::begin();
@@ -21,10 +21,11 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sodinimas</title>
-    <link rel="stylesheet" href="./main.css">
-    <link rel="stylesheet" href="./css/growing.css">
-    <link rel="stylesheet" href="./css/veggies.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/planting.css">
+    <link rel="stylesheet" href="./css/growing.css">
+    <link rel="stylesheet" href="./css/harvesting.css">
+    <link rel="stylesheet" href="./css/veggies.css">
     <link rel="stylesheet" href="./css/button.css">
 </head>
 <body class="plant-main">

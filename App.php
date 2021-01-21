@@ -1,6 +1,6 @@
 <?php
-include __DIR__.'/GardenRepository.php';
-include __DIR__.'/DBRepository.php';
+include __DIR__.'/repository/GardenRepository.php';
+include __DIR__.'/repository/DBRepository.php';
 
 class App {
 
