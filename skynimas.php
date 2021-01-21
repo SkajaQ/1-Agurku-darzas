@@ -30,7 +30,7 @@ $krwRate = $_SESSION['rates']->KRW;
 <!-- <h1>Agurkų sodas</h1> -->
 <h3>Skynimas</h3>
     <form action="" method="post">
-    <h1>Agurkai - Kaina: <?= Agurkas::PRICE?> eur, <?= round((Agurkas::PRICE*$plnRate), 2) ?> pln, <?= Agurkas::PRICE*$krwRate ?> krw </h1> 
+    <h1>Agurkai - Kaina: <?= Agurkas::PRICE?> eur, <?= round((Agurkas::PRICE*$plnRate), 2) ?> pln, <?= round((Agurkas::PRICE*$krwRate), 2) ?> krw </h1> 
 
     <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
     <div>
@@ -46,7 +46,7 @@ $krwRate = $_SESSION['rates']->KRW;
     </div>
     <?php endforeach ?>
 
-    <h1>Pomidorai - Kaina: <?= Pomidoras::PRICE?> eur, <?= round((Pomidoras::PRICE*$plnRate), 2) ?> pln, <?= Pomidoras::PRICE*$krwRate ?> krw </h1>
+    <h1>Pomidorai - Kaina: <?= Pomidoras::PRICE?> eur, <?= round((Pomidoras::PRICE*$plnRate), 2) ?> pln, <?= round((Pomidoras::PRICE*$krwRate), 2) ?> krw </h1>
     <?php foreach(App::getRepository()->getAllByType('pomidoras') as $id => &$pomidoras): ?>
     <div>
         Pomidoras Nr. <?= $pomidoras->getId() ?>
