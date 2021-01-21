@@ -12,6 +12,9 @@ App::loadCurrencies();
 $plnRate = $_SESSION['rates']->PLN;
 $krwRate = $_SESSION['rates']->KRW;
 
+$priceCuc = "Kaina: ".(Agurkas::PRICE)." eur, ".(round((Agurkas::PRICE*$plnRate), 2))." pln, ".(round((Agurkas::PRICE*$krwRate), 2))." krw;";
+$priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnRate), 2))." pln, ".(round((Pomidoras::PRICE*$krwRate), 2))." krw;";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,35 +34,33 @@ $krwRate = $_SESSION['rates']->KRW;
 <!-- <h1>Agurkų sodas</h1> -->
 <h3 class="plant-ttl">Skynimas</h3>
     <form action="" method="post">
-    <h1>Agurkai - Kaina: <?= Agurkas::PRICE?> eur, <?= round((Agurkas::PRICE*$plnRate), 2) ?> pln, <?= round((Agurkas::PRICE*$krwRate), 2) ?> krw </h1> 
+    <h1 class="grow-vegname">Agurkai - <?= $priceCuc ?></h1> 
 
     <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
-    <div>
+    <div class="grow-line">
         Agurkas Nr. <?= $agurkas->getId() ?>
+        <span class="grow-line">Užaugo: <?= $agurkas->getKiekis() ?></span>
         <input type="text" name="kiekisSkintiAgurku<?= $agurkas->getId() ?>" value="<?= $_POST['kiekisSkintiAgurku' .$agurkas->getId()] ?? '' ?>">
         <!-- <input type="text" name="eurPrice" value="<?=$agurkas->getPrice() ?>">  -->
         <!-- <input type="text" value="<?= round(($agurkas->getPrice()*$plnRate), 2) ?>"> -->
-        <!-- <input type="text" value="<?=$agurkas->getPrice()*$krwRate ?>"> -->
-        <br>
-        <button type="submit" name="skintiAgurku<?= $agurkas->getId() ?>">Skinti</button>
-        <button type="submit" name="skintiVisusAgurkus<?= $agurkas->getId() ?>">Skinti visus nuo krumo</button>
-        <h1 style="display:inline;"><?= $agurkas->getKiekis() ?></h1>
+        <!-- <input type="text" value="<?=round(($agurkas->getPrice()*$krwRate), 2) ?>"> -->
+        <button type="submit" name="skintiAgurku<?= $agurkas->getId() ?>" class="button sodinti">Skinti</button>
+        <button type="submit" name="skintiVisusAgurkus<?= $agurkas->getId() ?>" class="button sodinti">Skinti visus nuo krumo</button>
     </div>
     <?php endforeach ?>
 
-    <h1>Pomidorai - Kaina: <?= Pomidoras::PRICE?> eur, <?= round((Pomidoras::PRICE*$plnRate), 2) ?> pln, <?= round((Pomidoras::PRICE*$krwRate), 2) ?> krw </h1>
+    <h1 class="grow-vegname">Pomidorai - <?= $priceTom ?></h1>
     <?php foreach(App::getRepository()->getAllByType('pomidoras') as $id => &$pomidoras): ?>
-    <div>
+    <div class="grow-line">
         Pomidoras Nr. <?= $pomidoras->getId() ?>
+        <span class="grow-line">Užaugo: <?= $pomidoras->getKiekis() ?></span>
         <input type="text" name="kiekisSkintiPomidoru<?= $pomidoras->getId() ?>" value="<?= $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()] ?? '' ?>">
-        <br>
-        <button type="submit" name="skintiPomidoru<?= $pomidoras->getId() ?>">Skinti</button>
-        <button type="submit" name="skintiVisusPomidorus<?= $pomidoras->getId() ?>">Skinti visus nuo krumo</button>
-        <h1 style="display:inline;"><?= $pomidoras->getKiekis() ?></h1>
+        <button type="submit" name="skintiPomidoru<?= $pomidoras->getId() ?>" class="button sodinti">Skinti</button>
+        <button type="submit" name="skintiVisusPomidorus<?= $pomidoras->getId() ?>" class="button sodinti">Skinti visus nuo krumo</button>
     </div>
     <?php endforeach ?>
 
-    <button type="submit" name="skintiDerliu">Nuimti derliu</button>
+    <button type="submit" name="skintiDerliu" class="link btn">Nuimti derliu</button>
     </form>
 </body>
 </html>

@@ -33,8 +33,9 @@ body > footer {
 
 .backgr {
     width: 100%;
-    background-image: url(../images/back8.jpg);
-    background-repeat: repeat-y;
+    height: 100%;
+    background-image: url(../images/backs/back10.jpg);
+    background-repeat: space;
     background-size: cover;
     background-position: center;
     /* filter: blur(4px);

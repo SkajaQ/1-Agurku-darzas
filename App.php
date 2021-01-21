@@ -184,7 +184,7 @@ class App {
     }
 
     public static function loadCurrencies() {
-        include __DIR__ . '/Currency API/Cache.php';
+        include __DIR__ . '/currency/Cache.php';
         $DATA = new Cache();
         $answer = $DATA->get();
 

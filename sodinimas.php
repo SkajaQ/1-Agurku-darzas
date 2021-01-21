@@ -35,7 +35,7 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
 
     <form action="" method="post">
 
-    <h1>Agurkai</h1>
+    <h1 class="grow-vegname">Agurkai</h1>
     <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
     <div class="planting cucumber">
         <img src="./images/cucumber.jpg" alt="" class="cucumber">
@@ -46,7 +46,7 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
     <?php endforeach ?>
     <button type="submit" name="sodintiAgurka" class="sodinti btn2-cucumber">Plant Cucumber</button>
 
-    <h1>Pomidorai</h1>
+    <h1 class="grow-vegname">Pomidorai</h1>
     <?php foreach(App::getRepository()->getAllByType('pomidoras') as &$pomidoras): ?>
         <div class="planting tomato">
         <img src="./images/tomato.jpg" alt="" class="tomato">

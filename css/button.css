@@ -14,7 +14,7 @@
     padding-right: 25px;
     text-decoration: none;
     margin: 5px;
-    transition-duration: 0.4s;
+    /* transition-duration: 0.4s; */
     cursor: pointer;
     box-shadow: 1px 1px 15px 1px #13131344;
     border: 1px solid  #f34236;
@@ -30,7 +30,7 @@
 
 .btn-cucumber {
     display: inline-block;
-    background-color: #06a865;
+    background-color: #11b95d;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
@@ -43,7 +43,7 @@
     padding-right: 25px;
     text-decoration: none;
     margin: 5px;
-    transition-duration: 0.4s;
+    /* transition-duration: 0.4s; */
     cursor: pointer;
     box-shadow: 1px 1px 15px 1px #13131344;
     border: 1px solid  #f34236;
@@ -72,7 +72,7 @@
     padding-right: 25px;
     text-decoration: none;
     margin: 5px;
-    transition-duration: 0.4s;
+    /* transition-duration: 0.4s; */
     cursor: pointer;
     box-shadow: 1px 1px 15px 1px #13131344;;
 }
@@ -100,14 +100,14 @@
     padding-right: 25px;
     text-decoration: none;
     margin: 5px;
-    transition-duration: 0.4s;
+    /* transition-duration: 0.4s; */
     cursor: pointer;
     box-shadow: 1px 1px 15px 1px #13131344;;
 }
 
 .btn2-cucumber:hover {
     box-shadow: 3px 10px 15px 3px rgb(243, 243, 243);
-    background-color: #06a865;
+    background-color: #11b95d;
     color: rgb(238, 238, 238);
     transition-duration: 0.9s;
     box-shadow: 3px 10px 15px 3px #4d4d4d62;
