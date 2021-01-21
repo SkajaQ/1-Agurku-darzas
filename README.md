@@ -2,7 +2,7 @@
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 # Family garden
-### Simpliest game project
+### My first project in PHP - simpliest game-like project
 
 ## Project features
 - HTML, CSS, PHP
