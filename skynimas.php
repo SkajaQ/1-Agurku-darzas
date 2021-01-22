@@ -62,7 +62,7 @@ $priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnR
             <img src="./images/tomato.jpg" alt="" class="tomato">
             Krūmo Nr. <?= $pomidoras->getId() ?>
             <span class="grow-line">Užaugo: <?= $pomidoras->getKiekis() ?></span>
-            <input type="text" name="kiekisSkintiPomidoru<?= $pomidoras->getId() ?>" pattern="[0-999]{1,}" value="<?= $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()] ?? '' ?>">
+            <input type="number" name="kiekisSkintiPomidoru<?= $pomidoras->getId() ?>" value="<?= $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()] ?? '' ?>">
             <button type="submit" name="skintiPomidoru<?= $pomidoras->getId() ?>" class="button sodinti">Skinti</button>
             <button type="submit" name="skintiVisusPomidorus<?= $pomidoras->getId() ?>" class="button sodinti">Skinti visus nuo krumo</button>
         </div>

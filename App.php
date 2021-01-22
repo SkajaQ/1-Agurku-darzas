@@ -135,10 +135,10 @@ class App {
             $nameAll = 'skintiVisusAgurkus' . $agurkas->getId();
 
             if (isset($_POST[$name])) {
-                $likoAgurku = $agurkas->getKiekis() - $_POST['kiekisSkintiAgurku' .$agurkas->getId()];
+                $likoAgurku = $agurkas->getKiekis() - ceil(abs($_POST['kiekisSkintiAgurku' .$agurkas->getId()]));
                 if ($likoAgurku < 0) {
                     $likoAgurku = 0;
-                    
+
                 }
                 $agurkas->setKiekis($likoAgurku);
                 self::$repository->update($agurkas);
@@ -157,7 +157,7 @@ class App {
             $nameAll = 'skintiVisusPomidorus' . $pomidoras->getId();
 
             if (isset($_POST[$name])) {
-                $likoAPomidoru = $pomidoras->getKiekis() - $_POST['kiekisSkintiPomidoru' .$pomidoras->getId()];
+                $likoAPomidoru = $pomidoras->getKiekis() - ceil(abs($_POST['kiekisSkintiPomidoru' .$pomidoras->getId()]));
                 if ($likoAPomidoru < 0) {
                     $likoAPomidoru = 0;
                 }
