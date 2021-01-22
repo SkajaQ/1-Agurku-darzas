@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agurku darzas</title>
+    <title>Šeimos ūkis</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/growing.css">
     <link rel="stylesheet" href="./css/veggies.css">
@@ -13,7 +13,7 @@
 <body>
     <div class="backgr">
 
-    <h2 class="title">Agurkų daržas</h2>
+    <h2 class="title">Šeimos ūkis</h2>
     <div class="mainlinks">
         <a class="link" href="sodinimas.php">Sodinimas</a><br/>
         <a class="link" href="auginimas.php">Auginimas</a><br/>

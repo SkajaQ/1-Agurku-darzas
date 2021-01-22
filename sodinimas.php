@@ -39,24 +39,24 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
     <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
     <div class="planting cucumber">
         <img src="./images/cucumber.jpg" alt="" class="cucumber">
-        bush nr. <?= $agurkas->getId() ?>
-        Total: <?= $agurkas->getKiekis() ?>
-        <button class="button sodinti" type="submit" name="rautiAgurka" value="<?= $agurkas->getId() ?>">Dig Out</button>
+        Krūmo nr. <?= $agurkas->getId() ?>
+        Kiekis: <?= $agurkas->getKiekis() ?>
+        <button class="button sodinti" type="submit" name="rautiAgurka" value="<?= $agurkas->getId() ?>">Rauti</button>
     </div>
     <?php endforeach ?>
-    <button type="submit" name="sodintiAgurka" class="sodinti btn2-cucumber">Plant Cucumber</button>
+    <button type="submit" name="sodintiAgurka" class="sodinti btn2-cucumber">Sodinti agurką</button>
 
     <h1 class="grow-vegname">Pomidorai</h1>
     <?php foreach(App::getRepository()->getAllByType('pomidoras') as &$pomidoras): ?>
         <div class="planting tomato">
         <img src="./images/tomato.jpg" alt="" class="tomato">
-            bush nr. <?= $pomidoras->getId() ?>
-            Total: <?= $pomidoras->getKiekis() ?>
-            <button class="button sodinti" type="submit" name="rautiPomidora" value="<?= $pomidoras->getId() ?>">Dig Out</button>
+            Krūmo nr. <?= $pomidoras->getId() ?>
+            Kiekis: <?= $pomidoras->getKiekis() ?>
+            <button class="button sodinti" type="submit" name="rautiPomidora" value="<?= $pomidoras->getId() ?>">Rauti</button>
         </div>
         <?php endforeach ?>
 
-    <button type="submit" name="sodintiPomidora" class="sodinti btn2">Plant Tomato</button>
+    <button type="submit" name="sodintiPomidora" class="sodinti btn2">Sodinti pomidorą</button>
     </form>
 </body>
 </html>
