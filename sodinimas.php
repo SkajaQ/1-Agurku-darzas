@@ -33,7 +33,8 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
         <a class="linkIn" href="sodinimas.php">Sodinimas</a>
         <a class="linkIn" href="auginimas.php">Auginimas</a>
         <a class="linkIn" href="skynimas.php">Skynimas</a>
-        <a class="linkIn btn" href="index.php">Atgal</a>
+        <a class="linkIn" href="silo.php">Daržinė</a>
+        <a style="float: right" class="linkIn btn" href="index.php">Atgal</a>
         <h3 class="plant-ttl">Sodinimas</h3>
     </header>
 

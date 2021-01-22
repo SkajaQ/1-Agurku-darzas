@@ -18,7 +18,7 @@
         <a class="link" href="sodinimas.php">Sodinimas</a><br/>
         <a class="link" href="auginimas.php">Auginimas</a><br/>
         <a class="link" href="skynimas.php">Skynimas</a><br/>
-        <!-- <a class="link" href="Cart.php">Krepselis</a><br/> -->
+        <a class="link" href="silo.php">Daržinė</a><br/>
     </div>
 </div>
 </body>

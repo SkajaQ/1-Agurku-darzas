@@ -39,9 +39,9 @@ body > footer {
     padding-left: 100px;
     width: 100%;
     background-image: url(../images/backs/back9.jpg);
-    background-repeat: repeat-y;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top;
 }
 
 .grow-line {
