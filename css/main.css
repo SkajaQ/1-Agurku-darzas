@@ -6,29 +6,10 @@ body,
 body * {
     margin: 0;
     padding: 0;
-    height: 100%;
+    /* height: 100%; */
     vertical-align: top;
     box-sizing: border-box;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "head"
-      "feed"
-      "footer"; */
-}
-
-body > header {
-    grid-area: head;
-    }
-    
-main {
-grid-area: feed;
-}
-
-body > footer {
-    grid-area: footer;
-    grid-column: span 1;
 }
 
 .backgr {

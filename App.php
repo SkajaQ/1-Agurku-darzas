@@ -138,6 +138,7 @@ class App {
                 $likoAgurku = $agurkas->getKiekis() - $_POST['kiekisSkintiAgurku' .$agurkas->getId()];
                 if ($likoAgurku < 0) {
                     $likoAgurku = 0;
+                    
                 }
                 $agurkas->setKiekis($likoAgurku);
                 self::$repository->update($agurkas);

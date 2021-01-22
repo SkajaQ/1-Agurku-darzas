@@ -23,35 +23,43 @@ App::growing();
     <link rel="stylesheet" href="./css/button.css">
 </head>
 
-<body class="grow-main">
-<a class="link btn" href="index.php">Atgal</a>
-<h3 class="plant-ttl">Auginimas</h3>
-    <form action="" method="post">
+<body>
+    <header>
+        <a class="linkIn" href="sodinimas.php">Sodinimas</a>
+        <a class="linkIn" href="auginimas.php">Auginimas</a>
+        <a class="linkIn" href="skynimas.php">Skynimas</a>
+        <a class="linkIn btn" href="index.php">Atgal</a>
+        <h3 class="plant-ttl">Auginimas</h3>
+    </header>
+    <main class="grow-main">
+        <form action="" method="post">
+        <h1 class="grow-vegname">Agurkai</h1>
+        <?php foreach(App::getRepository()->getAllByType('agurkas') as $agurkas): ?>
+        <div class="grow-line">
+            <img src="./images/cucumber.jpg" alt="" class="cucumber">
+            Krūmo Nr. <?= $agurkas->getId() ?>
+            <?php $kiekisAgurku = $agurkas->auginti() ?>
+            <span class="grow-line">Yra: <?= $agurkas->getKiekis() ?></span>
+            <span class="grow-line">Užaugs +<?= $kiekisAgurku ?></span>
+            <input type="hidden" name="kiekisAgurku[<?= $agurkas->getId() ?>]" value="<?= $kiekisAgurku ?>">
+        </div>
+        <?php endforeach ?>
+        <button type="submit" name="augintiAgurkus" class="sodinti btn2-cucumber">Auginti agurkus</button>
 
-    <h1 class="grow-vegname">Agurkai</h1>
-    <?php foreach(App::getRepository()->getAllByType('agurkas') as $agurkas): ?>
-    <div class="grow-line">
-    <?php $kiekisAgurku = $agurkas->auginti() ?>
-    <span><?= $agurkas->getKiekis() ?></span>
-    <span>+<?= $kiekisAgurku ?></span>
-    <input type="hidden" name="kiekisAgurku[<?= $agurkas->getId() ?>]" value="<?= $kiekisAgurku ?>">
-    Agurkas Nr. <?= $agurkas->getId() ?>
-    </div>
-    <?php endforeach ?>
-    <button type="submit" name="augintiAgurkus" class="sodinti btn2-cucumber">Auginti agurkus</button>
-
-    <h1 class="grow-vegname">Pomidorai</h1>
-    <?php foreach(App::getRepository()->getAllByType('pomidoras') as $pomidoras): ?>
-    <div class="grow-line">
-    <?php $kiekisPomidoru = $pomidoras->auginti() ?>
-    <span><?= $pomidoras->getKiekis() ?></span>
-    <span>+<?= $kiekisPomidoru ?></span>
-    <input type="hidden" name="kiekisPomidoru[<?= $pomidoras->getId() ?>]" value="<?= $kiekisPomidoru ?>">
-    Pomidoras Nr. <?= $pomidoras->getId() ?>
-    </div>
-    <?php endforeach ?>
-    <button type="submit" name="augintiPomidorus" class="sodinti btn2">Auginti pomidorus</button>
-
-    </form>
+        <h1 class="grow-vegname">Pomidorai</h1>
+        
+        <?php foreach(App::getRepository()->getAllByType('pomidoras') as $pomidoras): ?>
+        <div class="grow-line">
+            <img src="./images/tomato.jpg" alt="" class="tomato">
+            Krūmo Nr. <?= $pomidoras->getId() ?>
+            <?php $kiekisPomidoru = $pomidoras->auginti() ?>
+            <span class="grow-line">Yra: <?= $pomidoras->getKiekis() ?></span>
+            <span class="grow-line">Užaugs +<?= $kiekisPomidoru ?></span>
+            <input type="hidden" name="kiekisPomidoru[<?= $pomidoras->getId() ?>]" value="<?= $kiekisPomidoru ?>">
+        </div>
+        <?php endforeach ?>
+        <button type="submit" name="augintiPomidorus" class="sodinti btn2">Auginti pomidorus</button>
+        </form>
+    </main>
 </body>
 </html>

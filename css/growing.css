@@ -1,5 +1,42 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "feed"
+      "footer";
+}
+
+body > header {
+    display: inline;
+    grid-area: head;
+    width: 100%;
+}
+
+.linkIn {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 20px;
+}
+    
+main {
+    display: grid;
+    grid-template-columns: 1fr 1140px 1fr;
+    grid-area: feed;
+    text-align: center;
+    width: 100%;
+}
+
+body > footer {
+    grid-area: footer;
+    grid-column: span 1;
+}
+
 .grow-main {
-    margin-left: 100px;
+    padding-left: 100px;
     width: 100%;
     background-image: url(../images/backs/back9.jpg);
     background-repeat: repeat-y;
@@ -15,5 +52,7 @@
 }
 
 .grow-vegname {
+    display: inline;
+    width: 100%;
     margin-top: 50px;
 }
