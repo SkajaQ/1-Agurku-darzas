@@ -30,15 +30,19 @@ class DBRepository implements GardenRepository {
         }
         
         $sql = "INSERT INTO `veggies` (`amount`, `type`)
-        VALUES (".$darzove->getKiekis(). ", '".$type."');";
-        $this->pdo->query($sql);
+        VALUES (:amount, :type);";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(array(
+            'amount' => $darzove->getKiekis(),
+            'type' => $type
+        ));
     }
-
     
     public function get(int $id) {
         $sql = "SELECT * FROM `veggies`
-        WHERE `id` = ".$id.";";
-        $stmt = $this->pdo->query($sql); 
+        WHERE `id` = :id;";
+        $stmt = $this->pdo->prepare($sql); 
+        $stmt->execute(array('id' => $id));
 
         $masyvas = [];
         while ($row = $stmt->fetch())
@@ -80,8 +84,9 @@ class DBRepository implements GardenRepository {
     }
 
     public function getAllByType($type) {
-        $sql = "SELECT * FROM `veggies` WHERE `type` = '".$type."';";
-        $stmt = $this->pdo->query($sql); 
+        $sql = "SELECT * FROM `veggies` WHERE `type` = :type;";
+        $stmt = $this->pdo->prepare($sql); 
+        $stmt->execute(array('type' => $type));
         $arr = [];
         while ($row = $stmt->fetch())
         {
@@ -99,20 +104,28 @@ class DBRepository implements GardenRepository {
     }
     
     public function delete(int $id) {
-        $sql = "DELETE FROM `veggies` WHERE `id` = ".$id.";";
-        $this->pdo->query($sql);
+        $sql = "DELETE FROM `veggies` WHERE `id` = :id;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(array('id' => $id));
     }
 
     public function update(Darzove $darzove) {
         $sql = "UPDATE `veggies`
-        SET `amount` = ".$darzove->getKiekis()." 
-        WHERE `id`=".$darzove->getId().";";
-        $this->pdo->query($sql);
+        SET `amount` = :amount WHERE `id` = :id;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(array(
+            'amount' => $darzove->getKiekis(),
+            'id' => $id
+        ));
     }
 
     public function getHarvested($type) {
         $sql = "SELECT SUM(amount) AS allAmount FROM veggies WHERE `type` = '".$type."';";
-        $stmt = $this->pdo->query($sql); 
+        $stmt = $this->pdo->prepare($sql); 
+        // $stmt->execute(array(
+        //     'amount' => $darzove->getKiekis(),
+        //     'id' => $id
+        // ));
         $sum = 0;
         while ($row = $stmt->fetch()) {
             var_dump($row);
