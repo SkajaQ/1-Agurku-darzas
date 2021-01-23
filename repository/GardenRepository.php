@@ -15,4 +15,6 @@ interface GardenRepository {
 
     public function update(Darzove $darzove);
 
+    public function getHarvested($type);
+
 }

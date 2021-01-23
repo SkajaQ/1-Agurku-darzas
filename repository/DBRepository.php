@@ -5,13 +5,14 @@ class DBRepository implements GardenRepository {
     private PDO $pdo;
 
     public function __construct() {
-        $host = '127.0.0.1';
-        $db   = 'garden';
-        $user = 'root';
-        $pass = '';
-        $charset = 'utf8mb4';
-        
-        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $host = getenv('DB_HOST');
+        $port = getenv('DB_PORT');
+        $db   = getenv('DB_DATABASE');
+        $user = getenv('DB_USERNAME');
+        $pass = getenv('DB_PASSWORD');
+        $charset = getenv('DB_CHARSET');
+
+        $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -107,7 +108,16 @@ class DBRepository implements GardenRepository {
         SET `amount` = ".$darzove->getKiekis()." 
         WHERE `id`=".$darzove->getId().";";
         $this->pdo->query($sql);
-        
     }
 
+    public function getHarvested($type) {
+        $sql = "SELECT SUM(amount) AS allAmount FROM veggies WHERE `type` = '".$type."';";
+        $stmt = $this->pdo->query($sql); 
+        $sum = 0;
+        while ($row = $stmt->fetch()) {
+            var_dump($row);
+            $sum = $row['allAmount'];
+        }
+        return $sum;
+    }
 }

@@ -41,7 +41,7 @@ $priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnR
     </header>
 
     <main class="harv-main">
-        <form class="harv-form" action="" method="post">
+        <form class="form" action="" method="post">
         <h1 class="grow-vegname">Agurkai - <?= $priceCuc ?></h1> 
         <?php foreach(App::getRepository()->getAllByType('agurkas') as $id => &$agurkas): ?>
         <div class="grow-line">

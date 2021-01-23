@@ -33,7 +33,7 @@ App::growing();
         <h3 class="plant-ttl">Auginimas</h3>
     </header>
     <main class="grow-main">
-        <form action="" method="post">
+        <form class="form" action="" method="post">
         <h1 class="grow-vegname">Agurkai</h1>
         <?php foreach(App::getRepository()->getAllByType('agurkas') as $agurkas): ?>
         <div class="grow-line">

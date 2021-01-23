@@ -1,6 +1,11 @@
 <?php
+include __DIR__.'/vendor/autoload.php';
 include __DIR__.'/repository/GardenRepository.php';
 include __DIR__.'/repository/DBRepository.php';
+
+use Dotenv\Dotenv;
+    $dotenv = new Dotenv(__DIR__);
+    $dotenv->load();
 
 class App {
 
@@ -8,7 +13,9 @@ class App {
 
     public static function begin() {
         session_start();
-        // session_destroy();
+
+        
+
         if (!isset($repository)) {
             self::$repository = new DBRepository();
         }

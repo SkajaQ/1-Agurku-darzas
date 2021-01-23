@@ -1,3 +1,12 @@
+<?php
+include __DIR__.'/vendor/autoload.php';
+include __DIR__.'/model/Darzove.php';
+include __DIR__.'/model/Agurkas.php';
+include __DIR__.'/model/Pomidoras.php';
+include __DIR__.'/App.php';
+App::begin();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +28,22 @@
         <a class="linkIn" href="skynimas.php">Skynimas</a>
         <a style="float: right" class="linkIn btn" href="index.php">Atgal</a>
     </header>
+
+    <main>
+        <div>
+            <img src="./images/cucumber.jpg" alt="" class="cucumber">
+            
+                Kiekis: <?= App::getRepository()->getHarvested('agurkas'); ?>
+
+
+            <br><br><br><br><img src="./images/tomato.jpg" alt="" class="tomato">
+                
+                Kiekis: <?= App::getRepository()->getHarvested('pomidoras'); ?>
+
+        </div>
+    </main>
+
+
 </body>
 </html>
 
