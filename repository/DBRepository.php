@@ -22,20 +22,11 @@ class DBRepository implements GardenRepository {
         $this->pdo = new PDO($dsn, $user, $pass, $options);
     }
 
-    public function save(Darzove $darzove) {
-        if ($darzove instanceof Agurkas) {
-            $type = 'agurkas'; 
-        } else if ($darzove instanceof Pomidoras) {
-            $type = 'pomidoras';
-        }
-        
-        $sql = "INSERT INTO `veggies` (`amount`, `type`)
-        VALUES (:amount, :type);";
+    public function addNew($type) {        
+        $sql = "INSERT INTO `veggies` (`type`)
+        VALUES (:type);";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(array(
-            'amount' => $darzove->getKiekis(),
-            'type' => $type
-        ));
+        $stmt->execute(array('type' => $type));
     }
     
     public function get(int $id) {

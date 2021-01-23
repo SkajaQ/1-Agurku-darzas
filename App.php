@@ -25,40 +25,43 @@ class App {
 
     public static function router() {
         if (URI[0] == '' || URI[0] == 'plant') {
-            if (!isset(URI[1])) {
-                return (new Controller\Garden)->render();
+            $controller = new PlantingController(self::$repository);
+            if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
+                return $controller->render();
             }
-            if (URI[1] == 'new') {
-                return (new Controller\Garden)->plantNew();
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $type = json_decode(file_get_contents("php://input"))->type;
+                return $controller->plant($type);
             }
-            if (URI[1] == 'remove') {
-                return (new Controller\Garden)->uproot();
+            if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+                $id = json_decode(file_get_contents("php://input"))->id;
+                return $controller->remove($id);
             }
         }
 
         if (URI[0] == 'grow') {
-            if (!isset(URI[1])) {
+            if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
                 return (new Controller\Grow)->render();
             }
-            if (URI[1] == 'type') {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 return (new Controller\Grow)->growAll();
             }
         }
         
         if (URI[0] == 'harvest') {
-            if (!isset(URI[1])) {
+            if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
                 return (new Controller\Pick)->render();
             }
-            if (URI[1] == 'all') {
+            if (URI[1] == 'all' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
                 return (new Controller\Pick)->pick();
             }
-            if (URI[1] == 'all/type') {
+            if (URI[1] == 'all/type' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
                 return (new Controller\Pick)->pick();
             }
-            if (URI[1] == 'bush') {
+            if (URI[1] == 'bush' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
                 return (new Controller\Pick)->pick();
             }
-            if (URI[1] == 'bush/part') {
+            if (URI[1] == 'bush/part' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
                 return (new Controller\Pick)->pick();
             }
         }

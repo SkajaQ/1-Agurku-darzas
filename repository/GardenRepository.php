@@ -1,7 +1,7 @@
 <?php
 interface GardenRepository {
 
-    public function save(Darzove $darzove);
+    public function addNew($type);
     
     public function get(int $id);
 
