@@ -1,4 +1,5 @@
 .harv-main {
+ 
     padding-left: 100px;
     width: 100%;
     background-image: url(../images/backs/back9.jpg);
@@ -8,5 +9,6 @@
 }
 
 .form {
-    width: 1000px;
+    display: inline-block;
+    width: 500px;
 }

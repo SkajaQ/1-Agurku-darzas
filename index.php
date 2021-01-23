@@ -12,7 +12,6 @@
 
 <body>
     <div class="backgr">
-
     <h2 class="title">Šeimos ūkis</h2>
     <div class="mainlinks">
         <a class="link" href="sodinimas.php">Sodinimas</a><br/>

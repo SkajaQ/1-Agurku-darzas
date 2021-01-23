@@ -4,18 +4,16 @@ include __DIR__.'/repository/GardenRepository.php';
 include __DIR__.'/repository/DBRepository.php';
 
 use Dotenv\Dotenv;
-    $dotenv = new Dotenv(__DIR__);
-    $dotenv->load();
+   
+$dotenv = new Dotenv(__DIR__);
+$dotenv->load();
 
 class App {
 
     private static GardenRepository $repository;
 
     public static function begin() {
-        session_start();
-
-        
-
+        session_start();   
         if (!isset($repository)) {
             self::$repository = new DBRepository();
         }
@@ -25,24 +23,63 @@ class App {
         return self::$repository;
     }
 
+    public static function router() {
+        if (URI[0] == '' || URI[0] == 'plant') {
+            if (!isset(URI[1])) {
+                return (new Controller\Garden)->render();
+            }
+            if (URI[1] == 'new') {
+                return (new Controller\Garden)->plantNew();
+            }
+            if (URI[1] == 'remove') {
+                return (new Controller\Garden)->uproot();
+            }
+        }
+
+        if (URI[0] == 'grow') {
+            if (!isset(URI[1])) {
+                return (new Controller\Grow)->render();
+            }
+            if (URI[1] == 'type') {
+                return (new Controller\Grow)->growAll();
+            }
+        }
+        
+        if (URI[0] == 'harvest') {
+            if (!isset(URI[1])) {
+                return (new Controller\Pick)->render();
+            }
+            if (URI[1] == 'all') {
+                return (new Controller\Pick)->pick();
+            }
+            if (URI[1] == 'all/type') {
+                return (new Controller\Pick)->pick();
+            }
+            if (URI[1] == 'bush') {
+                return (new Controller\Pick)->pick();
+            }
+            if (URI[1] == 'bush/part') {
+                return (new Controller\Pick)->pick();
+            }
+        }
+
+        // if (isset(URI[1]) && URI[1] == 'setCurrency') {
+        //     return (new Controller\Currency)->setCurrency();
+        // }
+        return include_once __DIR__ . '/notFound.php';
+    }
+
     public static function planting () {
         // SODINIMO SCENARIJUS
         if (isset($_POST['sodintiAgurka'])) {
-            // $id = ++$_SESSION['lastId'];
             $id = self::getRepository()->getNewId();
-            // $_SESSION['agurkas'][$id] = new Agurkas($id);
             self::getRepository()->save(new Agurkas($id));
             header('Location: http://localhost:3000/sodinimas.php');
             exit;
         }
         if (isset($_POST['sodintiPomidora'])) {
             $id = self::getRepository()->getNewId();
-
-            // $id = ++$_SESSION['lastId'];
             self::getRepository()->save(new Pomidoras($id));
-
-            // $_SESSION['pomidoras'][$id] = new Pomidoras($id);
-
             header('Location: http://localhost:3000/sodinimas.php');
             exit;
         }
@@ -57,15 +94,6 @@ class App {
                     exit;
                 }
             }
-            // foreach($_SESSION['agurkas'] as $id => $agurkas) {
-
-            //     if ($_POST['rautiAgurka'] == $agurkas->getId()) {
-            //         unset($_SESSION['agurkas'][$id]);
-            //         header('Location: http://localhost:3000/sodinimas.php');
-            //         exit;
-            //     }
-            // }
-
         }
         if (isset($_POST['rautiPomidora'])) {
             foreach(self::$repository->getAll() as $id => $pomidoras) {
@@ -76,15 +104,6 @@ class App {
                     exit;
                 }
             }
-
-            // foreach($_SESSION['pomidoras'] as $id => $pomidoras) {
-
-            //     if ($_POST['rautiPomidora'] == $pomidoras->getId()) {
-            //         unset($_SESSION['pomidoras'][$id]);
-            //         header('Location: http://localhost:3000/sodinimas.php');
-            //         exit;
-            //     }
-            // }
         }
     }
 
@@ -96,12 +115,6 @@ class App {
                 $agurkas->setKiekis($visasKiekis);
                 self::$repository->update($agurkas);
             }
-
-
-            // foreach($_SESSION['agurkas'] as $id => &$agurkas) {
-            //     $visasKiekis = $agurkas->getKiekis() + $_POST['kiekisAgurku'][$agurkas->getId()];
-            //     $agurkas->setKiekis($visasKiekis);
-            // }
             header('Location: http://localhost:3000/auginimas.php');
             exit;
         }
@@ -111,10 +124,6 @@ class App {
                 $pomidoras->setKiekis($visasKiekis);
                 self::$repository->update($pomidoras);
             }
-            // foreach($_SESSION['pomidoras'] as $id => &$pomidoras) {
-            //     $visasKiekis = $pomidoras->getKiekis() + $_POST['kiekisPomidoru'][$pomidoras->getId()];
-            //     $pomidoras->setKiekis($visasKiekis);
-            // }
             header('Location: http://localhost:3000/auginimas.php');
             exit;
         }
@@ -127,13 +136,6 @@ class App {
                 $darzove->setKiekis(0);
                 self::$repository->update($darzove);
             }
-
-            // foreach($_SESSION['agurkas'] as $id => &$agurkas) {
-            //     $agurkas->setKiekis(0);
-            // } 
-            // foreach($_SESSION['pomidoras'] as $id => &$pomidoras) {
-            //     $pomidoras->setKiekis(0);
-            // }
             header('Location: http://localhost:3000/skynimas.php');
             exit;
         }

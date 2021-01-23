@@ -112,25 +112,29 @@ class DBRepository implements GardenRepository {
     public function update(Darzove $darzove) {
         $sql = "UPDATE `veggies`
         SET `amount` = :amount WHERE `id` = :id;";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(array(
-            'amount' => $darzove->getKiekis(),
-            'id' => $id
-        ));
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(array(
+                'amount' => $darzove->getKiekis(),
+                'id' => $darzove->getId()
+            ));
+            return $stmt->rowCount();
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
     }
 
     public function getHarvested($type) {
-        $sql = "SELECT SUM(amount) AS allAmount FROM veggies WHERE `type` = '".$type."';";
-        $stmt = $this->pdo->prepare($sql); 
+        // $sql = "SELECT SUM(amount) AS allAmount FROM veggies WHERE `type` = '".$type."';";
+        // $stmt = $this->pdo->prepare($sql); 
         // $stmt->execute(array(
-        //     'amount' => $darzove->getKiekis(),
-        //     'id' => $id
+        //     'type' => $type
         // ));
-        $sum = 0;
-        while ($row = $stmt->fetch()) {
-            var_dump($row);
-            $sum = $row['allAmount'];
-        }
-        return $sum;
+        // $sum = 0;
+        // while ($row = $stmt->fetch()) {
+        //     var_dump($row);
+        //     $sum = $row['allAmount'];
+        // }
+        // return $sum;
     }
 }
