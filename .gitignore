@@ -2,6 +2,6 @@
 /.env.local.php
 /.env.*.local
 /vendor/
-/.vscode
-/.htaccess
-/composer.lock
+.vscode
+.htaccess
+composer.lock
