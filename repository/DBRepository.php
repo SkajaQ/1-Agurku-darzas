@@ -5,12 +5,12 @@ class DBRepository implements GardenRepository {
     private PDO $pdo;
 
     public function __construct() {
-        $host = getenv('DB_HOST');
-        $port = getenv('DB_PORT');
-        $db   = getenv('DB_DATABASE');
-        $user = getenv('DB_USERNAME');
-        $pass = getenv('DB_PASSWORD');
-        $charset = getenv('DB_CHARSET');
+        $host = $_ENV['DB_HOST'];
+        $port = $_ENV['DB_PORT'];
+        $db   = $_ENV['DB_DATABASE'];
+        $user = $_ENV['DB_USERNAME'];
+        $pass = $_ENV['DB_PASSWORD'];
+        $charset = $_ENV['DB_CHARSET'];
 
         $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
         $options = [
@@ -90,7 +90,7 @@ class DBRepository implements GardenRepository {
                 $pomidoras->setKiekis($row['amount']);
                 $arr[] = $pomidoras;
             }
-        }   
+        }
         return $arr;
     }
     

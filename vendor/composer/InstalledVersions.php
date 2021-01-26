@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b233faa4574cd1b2e0815045175b5238d9bb7051',
+    'reference' => '59560eb1bd94531d634ce17b191d1052af910efc',
     'name' => 'app/agurkai',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b233faa4574cd1b2e0815045175b5238d9bb7051',
+      'reference' => '59560eb1bd94531d634ce17b191d1052af910efc',
     ),
     'brick/math' => 
     array (
@@ -86,6 +86,15 @@ private static $installed = array (
       ),
       'reference' => '5fa56b4074d1ae755beb55617ddafe6f5d78f665',
     ),
+    'symfony/dotenv' => 
+    array (
+      'pretty_version' => 'v5.2.1',
+      'version' => '5.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '204a9dc6f70a13d9d24ebbf2c5ce51be235f3d7b',
+    ),
     'symfony/http-foundation' => 
     array (
       'pretty_version' => 'v5.2.1',
@@ -121,15 +130,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
-    ),
-    'vlucas/phpdotenv' => 
-    array (
-      'pretty_version' => 'v2.6.7',
-      'version' => '2.6.7.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'b786088918a884258c9e3e27405c6a4cf2ee246e',
     ),
   ),
 );

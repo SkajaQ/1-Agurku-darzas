@@ -4,13 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d
+class ComposerStaticInit3c04ebe48aaf858a3bbbb4795bf0dbc5
 {
     public static $files = array (
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
     );
 
@@ -25,15 +25,12 @@ class ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\HttpFoundation\\' => 33,
+            'Symfony\\Component\\Dotenv\\' => 25,
         ),
         'R' => 
         array (
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
-        ),
-        'D' => 
-        array (
-            'Dotenv\\' => 7,
         ),
         'B' => 
         array (
@@ -62,6 +59,10 @@ class ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
+        'Symfony\\Component\\Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/dotenv',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -69,10 +70,6 @@ class ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d
         'Ramsey\\Collection\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
-        ),
-        'Dotenv\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Brick\\Math\\' => 
         array (
@@ -91,9 +88,9 @@ class ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5ae913a2f7a62c4c9a5a8ea7467bf58d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3c04ebe48aaf858a3bbbb4795bf0dbc5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3c04ebe48aaf858a3bbbb4795bf0dbc5::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3c04ebe48aaf858a3bbbb4795bf0dbc5::$classMap;
 
         }, null, ClassLoader::class);
     }

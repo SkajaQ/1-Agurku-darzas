@@ -1,9 +1,9 @@
 <?php
-include __DIR__.'/vendor/autoload.php';
-include __DIR__.'/model/Darzove.php';
-include __DIR__.'/model/Agurkas.php';
-include __DIR__.'/model/Pomidoras.php';
-include __DIR__.'/App.php';
+include __DIR__.'/../vendor/autoload.php';
+include __DIR__.'/../model/Darzove.php';
+include __DIR__.'/../model/Agurkas.php';
+include __DIR__.'/../model/Pomidoras.php';
+include __DIR__.'/../App.php';
 
 App::begin();
 App::harvesting();
@@ -32,7 +32,7 @@ $priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnR
 
 <body>
     <header>
-        <a class="linkIn" href="sodinimas.php">Sodinimas</a>
+    <a class="linkIn" href="sodinimas.php">Sodinimas</a>
         <a class="linkIn" href="auginimas.php">Auginimas</a>
         <a class="linkIn" href="skynimas.php">Skynimas</a>
         <a class="linkIn" href="silo.php">Daržinė</a>

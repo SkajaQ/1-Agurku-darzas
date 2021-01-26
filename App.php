@@ -2,11 +2,18 @@
 include __DIR__.'/vendor/autoload.php';
 include __DIR__.'/repository/GardenRepository.php';
 include __DIR__.'/repository/DBRepository.php';
+include __DIR__.'/controller/PlantingController.php';
+include __DIR__.'/model/Darzove.php';
+include __DIR__.'/model/Agurkas.php';
+include __DIR__.'/model/Pomidoras.php';
 
-use Dotenv\Dotenv;
-   
-$dotenv = new Dotenv(__DIR__);
-$dotenv->load();
+use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/.env');
 
 class App {
 
@@ -24,22 +31,31 @@ class App {
     }
 
     public static function router() {
-        if (URI[0] == '' || URI[0] == 'plant') {
+        $uri = explode('/', $_SERVER['REQUEST_URI']);  
+
+        if ($uri[1] == 'pages') {
+            return;
+        }
+        
+        // TODO: if for uri 2 3
+
+        if ($uri[1] == 'plant') {
             $controller = new PlantingController(self::$repository);
-            if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
-                return $controller->render();
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $type = $uri[2];
+                return $controller->get($type);
             }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $type = json_decode(file_get_contents("php://input"))->type;
                 return $controller->plant($type);
             }
             if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-                $id = json_decode(file_get_contents("php://input"))->id;
+                $id = $uri[2];
                 return $controller->remove($id);
             }
         }
 
-        if (URI[0] == 'grow') {
+        if ($uri[1] == 'grow') {
             if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
                 return (new Controller\Grow)->render();
             }
@@ -48,7 +64,7 @@ class App {
             }
         }
         
-        if (URI[0] == 'harvest') {
+        if ($uri[1] == 'harvest') {
             if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
                 return (new Controller\Pick)->render();
             }
@@ -65,10 +81,6 @@ class App {
                 return (new Controller\Pick)->pick();
             }
         }
-
-        // if (isset(URI[1]) && URI[1] == 'setCurrency') {
-        //     return (new Controller\Currency)->setCurrency();
-        // }
         return include_once __DIR__ . '/notFound.php';
     }
 
