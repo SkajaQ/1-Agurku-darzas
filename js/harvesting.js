@@ -2,57 +2,59 @@ window.addEventListener('load', (e) => {
     const type = 'agurkas';
     axios.get('/plant/agurkas').then(function(response) {
         const data = JSON.parse(response.data);
-        data.forEach(element => {
-            const amount = element.kiekis + element.toGrow;
-            document.querySelector('.cucumber-place').insertAdjacentHTML('afterbegin', 
-            `<div class="grow-line">
-                <img src="./../images/cucumber.jpg" alt="" class="cucumber">
-                Krūmo nr. ${element.id}
-                <span class="grow-line">Yra: ${element.kiekis}</span>
-                <span class="grow-line">Užaugs ${element.toGrow}</span>
-                <input type="hidden" name="${element.id}" class="grow-cucumber" value="${amount}">
-            </div>`)
-        });
-    });
+        data.forEach(element => document.querySelector('.cucumber-place').insertAdjacentHTML('afterbegin', 
+        `<div class="planting cucumber">
+            <img src="./../images/cucumber.jpg" alt="" class="cucumber">
+            Krūmo nr. ${element.id}
+            Kiekis: ${element.kiekis}
+            <button class="button skinti" type="submit" name="skintiAgurka" value="${element.id}">Skinti</button>
+            <button class="button skintiKruma" type="submit" name="skintiKrumaAgurk" value="${element.id}">Skinti visa kruma</button>
+        </div>`));
+    }).then(function(){
+        addDeleteListener();
+    })
     // TODO: catch
 
     axios.get('/plant/pomidoras').then(function(response) {
         const data = JSON.parse(response.data);
-        data.forEach(element => {
-            const amount = element.kiekis + element.toGrow;
-            document.querySelector('.tomatoes-place').insertAdjacentHTML('afterbegin', 
+        data.forEach(element => document.querySelector('.tomatoes-place').insertAdjacentHTML('afterbegin', 
         `<div class="planting tomato">
             <img src="./../images/tomato.jpg" alt="" class="tomato">
             Krūmo nr. ${element.id}
-            <span class="grow-line">Yra: ${element.kiekis}</span>
-            <span class="grow-line">Užaugs ${element.toGrow}</span>
-            <input type="hidden" name="${element.id}" class="grow-tomato" value="${amount}">
-        </div>`)
-        });
-    });
+            Kiekis: ${element.kiekis}
+            <button class="button skinti" type="submit" name="skintiPomidora" value="${element.id}">Skinti</button>
+            <button class="button skintiKruma" type="submit" name="skintiKrumaPomid" value="${element.id}">Skinti visa kruma</button>
+        </div>`));
+    }).then(function(){
+        addDeleteListener();
+    })
     // TODO: catch
 });
 document.addEventListener("DOMContentLoaded", function(){
-    growListener('#growCucumber', '.grow-cucumber');
-    growListener('#growTomato', '.grow-tomato');
+    plantListener('#harvestCucumber', 'agurkas');
+    plantListener('#harvestTomato', 'pomidoras');
 });
 
-function growListener(idSelector, classSelector) {
+function plantListener(idSelector, veggieType) {
     document.querySelector(idSelector).addEventListener('click', (e) => {
-        let array = [];
-        document.querySelectorAll(classSelector).forEach(element => {
-            let object = {id: element.name, amount: element.value};
-            array.push(object);
-        });
-        console.log(array);
+        const type = veggieType;
         axios({
             method: 'post',
             data: {
-                array: array
+                type: type
             },
-            url: '/grow'
+            url: '/plant'
         }).then(function(response) {
             window.location.reload();
         });
     });
+}
+
+function addDeleteListener() {
+    document.querySelectorAll('.uproot').forEach(element => element.addEventListener('click', (e) => {
+        const id = e.target.value;
+        axios.delete('/plant/' + id).then(function(response) {
+            window.location.reload(); 
+        });
+    }));
 }

@@ -12,7 +12,6 @@ class GrowingController {
     }
 
     public function growAll($array) {
-        var_dump($array);
         foreach ($array as $index => &$item) {
             $darzove = new Agurkas($item->id);
             $darzove->setKiekis($item->amount);

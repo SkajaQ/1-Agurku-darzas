@@ -81,7 +81,7 @@ class App {
                 return (new Controller\Pick)->pick();
             }
         }
-        return include_once __DIR__ . '/notFound.php';
+        // return include_once __DIR__ . '/pages/notFound.php';
     }
 
     public static function planting () {

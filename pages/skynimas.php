@@ -12,8 +12,6 @@ App::loadCurrencies();
 $plnRate = $_SESSION['rates']->PLN;
 $krwRate = $_SESSION['rates']->KRW;
 
-$priceCuc = "Kaina: ".(Agurkas::PRICE)." eur, ".(round((Agurkas::PRICE*$plnRate), 2))." pln, ".(round((Agurkas::PRICE*$krwRate), 2))." krw;";
-$priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnRate), 2))." pln, ".(round((Pomidoras::PRICE*$krwRate), 2))." krw;";
 
 ?>
 <!DOCTYPE html>
@@ -42,6 +40,21 @@ $priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnR
         <h3 class="plant-ttl">Skynimas</h3>
     </header>
 
+    <main class="plant-main">
+        <h1 class="grow-vegname">Agurkai</h1>
+        <div class="cucumber-place"></div>
+        <button id="harvestCucumber" type="submit" name="skintiAgurka" class="sodinti btn2-cucumber">Skinti</button>
+        <button id="harvestCucumber" type="submit" name="skintiAgurka" class="sodinti btn2-cucumber">Skinti visą krūmą</button>
+
+
+        <h1 class="grow-vegname">Pomidorai</h1>
+        <div class="tomatoes-place"></div>
+        <button id="harvestTomato" type="submit" name="skintiPomidora" class="sodinti btn2">Skinti</button>
+        <button id="harvestTomato" type="submit" name="skintiPomidora" class="sodinti btn2">Skinti visą krūmą</button>
+
+        <button type="submit" name="skintiDerliu" class="link btn">Nuimti derlių</button>
+    </main>
+
     <main class="harv-main">
         <form class="form" action="" method="post">
         <h1 class="grow-vegname">Agurkai - <?= $priceCuc ?></h1> 
@@ -51,9 +64,6 @@ $priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnR
             Krūmo Nr. <?= $agurkas->getId() ?>
             <span class="grow-line">Užaugo: <?= $agurkas->getKiekis() ?></span>
             <input type="text" name="kiekisSkintiAgurku<?= $agurkas->getId() ?>" value="<?= $_POST['kiekisSkintiAgurku' .$agurkas->getId()] ?? '' ?>">
-            <!-- <input type="text" name="eurPrice" value="<?=$agurkas->getPrice() ?>">  -->
-            <!-- <input type="text" value="<?= round(($agurkas->getPrice()*$plnRate), 2) ?>"> -->
-            <!-- <input type="text" value="<?=round(($agurkas->getPrice()*$krwRate), 2) ?>"> -->
             <button type="submit" name="skintiAgurku<?= $agurkas->getId() ?>" class="button sodinti">Skinti</button>
             <button type="submit" name="skintiVisusAgurkus<?= $agurkas->getId() ?>" class="button sodinti">Skinti visus nuo krumo</button>
         </div>

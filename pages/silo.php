@@ -41,6 +41,14 @@ App::begin();
                 Kiekis: <?= App::getRepository()->getHarvested('pomidoras'); ?>
 
         </div>
+    <!-- $priceCuc = "Kaina: ".(Agurkas::PRICE)." eur, ".(round((Agurkas::PRICE*$plnRate), 2))." pln, ".(round((Agurkas::PRICE*$krwRate), 2))." krw;";
+    $priceTom = "Kaina: ".(Pomidoras::PRICE)." eur, ".(round((Pomidoras::PRICE*$plnRate), 2))." pln, ".(round((Pomidoras::PRICE*$krwRate), 2))." krw;"; -->
+
+    <!-- <input type="text" name="eurPrice" value="<?=$agurkas->getPrice() ?>">  -->
+    <!-- <input type="text" value="<?= round(($agurkas->getPrice()*$plnRate), 2) ?>"> -->
+    <!-- <input type="text" value="<?=round(($agurkas->getPrice()*$krwRate), 2) ?>"> -->
+
+
     </main>
 
 
