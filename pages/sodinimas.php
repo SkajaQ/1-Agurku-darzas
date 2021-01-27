@@ -1,18 +1,3 @@
-<?php
-include __DIR__.'/../vendor/autoload.php';
-include __DIR__.'/../App.php';
-
-App::begin();
-App::router();
-
-if (isset($_POST['sodintiAgurka']) || isset($_POST['sodintiPomidora'])) {
-    App::planting();
-}
-if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
-    App::planting();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +10,7 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
     <link rel="stylesheet" href="./../css/harvesting.css">
     <link rel="stylesheet" href="./../css/veggies.css">
     <link rel="stylesheet" href="./../css/button.css">
-    <script src="./../js/main.js"></script>
+    <script src="./../js/planting.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" defer integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
 
 </head>
@@ -35,7 +20,7 @@ if (isset($_POST['rautiAgurka']) || isset($_POST['rautiPomidora'])) {
         <a class="linkIn" href="auginimas.php">Auginimas</a>
         <a class="linkIn" href="skynimas.php">Skynimas</a>
         <a class="linkIn" href="silo.php">Daržinė</a>
-        <a style="float: right" class="linkIn btn" href="index.php">Atgal</a>
+        <a style="float: right" class="linkIn btn" href="./../index.php">Atgal</a>
         <h3 class="plant-ttl">Sodinimas</h3>
     </header>
 

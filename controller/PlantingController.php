@@ -33,11 +33,10 @@ class PlantingController {
         $string = "[";
         $arr = [];
         foreach($result as $id => $darzove) {
-            $arr[] = '{"id":'.$darzove->getId().',"kiekis":'.$darzove->getKiekis().'}';
+            $arr[] = '{"id":'.$darzove->getId().',"kiekis":'.$darzove->getKiekis().',"toGrow":'.$darzove->auginti().'}';
         }
         $string = $string.implode($arr, ",");
         $string = $string."]";
         return $string;    
     }
 }
-

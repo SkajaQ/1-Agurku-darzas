@@ -1,26 +1,17 @@
-<?php
-include __DIR__.'/../vendor/autoload.php';
-include __DIR__.'/../model/Darzove.php';
-include __DIR__.'/../model/Agurkas.php';
-include __DIR__.'/../model/Pomidoras.php';
-include __DIR__.'/../App.php';
-
-App::begin();
-App::growing();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title >Auginimas</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/planting.css">
-    <link rel="stylesheet" href="./css/growing.css">
-    <link rel="stylesheet" href="./css/harvesting.css">
-    <link rel="stylesheet" href="./css/veggies.css">
-    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./../css/main.css">
+    <link rel="stylesheet" href="./../css/planting.css">
+    <link rel="stylesheet" href="./../css/growing.css">
+    <link rel="stylesheet" href="./../css/harvesting.css">
+    <link rel="stylesheet" href="./../css/veggies.css">
+    <link rel="stylesheet" href="./../css/button.css">
+    <script src="./../js/growing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" defer integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -29,38 +20,18 @@ App::growing();
         <a class="linkIn" href="auginimas.php">Auginimas</a>
         <a class="linkIn" href="skynimas.php">Skynimas</a>
         <a class="linkIn" href="silo.php">Daržinė</a>
-        <a style="float: right" class="linkIn btn" href="index.php">Atgal</a>
+        <a style="float: right" class="linkIn btn" href="./../index.php">Atgal</a>
         <h3 class="plant-ttl">Auginimas</h3>
     </header>
-    <main class="grow-main">
-        <form class="form" action="" method="post">
+
+    <main class="plant-main">
         <h1 class="grow-vegname">Agurkai</h1>
-        <?php foreach(App::getRepository()->getAllByType('agurkas') as $agurkas): ?>
-        <div class="grow-line">
-            <img src="./images/cucumber.jpg" alt="" class="cucumber">
-            Krūmo Nr. <?= $agurkas->getId() ?>
-            <?php $kiekisAgurku = $agurkas->auginti() ?>
-            <span class="grow-line">Yra: <?= $agurkas->getKiekis() ?></span>
-            <span class="grow-line">Užaugs +<?= $kiekisAgurku ?></span>
-            <input type="hidden" name="kiekisAgurku[<?= $agurkas->getId() ?>]" value="<?= $kiekisAgurku ?>">
-        </div>
-        <?php endforeach ?>
-        <button type="submit" name="augintiAgurkus" class="sodinti btn2-cucumber">Auginti agurkus</button>
+        <div class="cucumber-place"></div>
+        <button id="growCucumber" type="submit" name="augintiAgurka" class="sodinti btn2-cucumber">Auginti agurkus</button>
 
         <h1 class="grow-vegname">Pomidorai</h1>
-        
-        <?php foreach(App::getRepository()->getAllByType('pomidoras') as $pomidoras): ?>
-        <div class="grow-line">
-            <img src="./images/tomato.jpg" alt="" class="tomato">
-            Krūmo Nr. <?= $pomidoras->getId() ?>
-            <?php $kiekisPomidoru = $pomidoras->auginti() ?>
-            <span class="grow-line">Yra: <?= $pomidoras->getKiekis() ?></span>
-            <span class="grow-line">Užaugs +<?= $kiekisPomidoru ?></span>
-            <input type="hidden" name="kiekisPomidoru[<?= $pomidoras->getId() ?>]" value="<?= $kiekisPomidoru ?>">
-        </div>
-        <?php endforeach ?>
-        <button type="submit" name="augintiPomidorus" class="sodinti btn2">Auginti pomidorus</button>
-        </form>
+        <div class="tomatoes-place"></div>
+        <button id="growTomato" type="submit" name="augintiPomidora" class="sodinti btn2">Auginti pomidorus</button>
     </main>
 </body>
 </html>

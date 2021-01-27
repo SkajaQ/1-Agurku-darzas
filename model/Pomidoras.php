@@ -1,6 +1,5 @@
 <?php
 
-
 class Pomidoras extends Darzove {
     public const PRICE = 1.55;
     public function auginti() {

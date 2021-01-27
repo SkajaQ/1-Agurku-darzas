@@ -75,7 +75,7 @@ class DBRepository implements GardenRepository {
     }
 
     public function getAllByType($type) {
-        $sql = "SELECT * FROM `veggies` WHERE `type` = :type;";
+        $sql = "SELECT * FROM `veggies` WHERE `type` = :type ORDER BY `id` DESC;";
         $stmt = $this->pdo->prepare($sql); 
         $stmt->execute(array('type' => $type));
         $arr = [];

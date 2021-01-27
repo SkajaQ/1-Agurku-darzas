@@ -3,9 +3,11 @@ include __DIR__.'/vendor/autoload.php';
 include __DIR__.'/repository/GardenRepository.php';
 include __DIR__.'/repository/DBRepository.php';
 include __DIR__.'/controller/PlantingController.php';
+include __DIR__.'/controller/GrowingController.php';
 include __DIR__.'/model/Darzove.php';
 include __DIR__.'/model/Agurkas.php';
 include __DIR__.'/model/Pomidoras.php';
+// include __DIR__.'/pages/notFound.php';
 
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,11 +58,9 @@ class App {
         }
 
         if ($uri[1] == 'grow') {
-            if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
-                return (new Controller\Grow)->render();
-            }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                return (new Controller\Grow)->growAll();
+                $array = json_decode(file_get_contents("php://input"))->array;
+                return (new GrowingController(self::$repository))->growAll($array);
             }
         }
         

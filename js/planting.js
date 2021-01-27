@@ -4,7 +4,7 @@ window.addEventListener('load', (e) => {
         const data = JSON.parse(response.data);
         data.forEach(element => document.querySelector('.cucumber-place').insertAdjacentHTML('afterbegin', 
         `<div class="planting cucumber">
-            <img src="./images/cucumber.jpg" alt="" class="cucumber">
+            <img src="./../images/cucumber.jpg" alt="" class="cucumber">
             Krūmo nr. ${element.id}
             Kiekis: ${element.kiekis}
             <button class="button sodinti uproot" type="submit" name="rautiAgurka" value="${element.id}">Rauti</button>
@@ -18,7 +18,7 @@ window.addEventListener('load', (e) => {
         const data = JSON.parse(response.data);
         data.forEach(element => document.querySelector('.tomatoes-place').insertAdjacentHTML('afterbegin', 
         `<div class="planting tomato">
-            <img src="./images/tomato.jpg" alt="" class="tomato">
+            <img src="./../images/tomato.jpg" alt="" class="tomato">
             Krūmo nr. ${element.id}
             Kiekis: ${element.kiekis}
             <button class="button sodinti uproot" type="submit" name="rautiPomidora" value="${element.id}">Rauti</button>

@@ -1,5 +1,9 @@
 <?php
 
-class Controller {
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+class HarvestingController {
+ 
+    
     
 }
