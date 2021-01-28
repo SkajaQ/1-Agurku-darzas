@@ -4,10 +4,10 @@ include __DIR__.'/repository/GardenRepository.php';
 include __DIR__.'/repository/DBRepository.php';
 include __DIR__.'/controller/PlantingController.php';
 include __DIR__.'/controller/GrowingController.php';
+include __DIR__.'/controller/HarvestingController.php';
 include __DIR__.'/model/Darzove.php';
 include __DIR__.'/model/Agurkas.php';
 include __DIR__.'/model/Pomidoras.php';
-// include __DIR__.'/pages/notFound.php';
 
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +35,7 @@ class App {
     public static function router() {
         $uri = explode('/', $_SERVER['REQUEST_URI']);  
 
-        if ($uri[1] == 'pages') {
+        if ($uri[1] == 'pages' || $uri[1] == 'index.php') {
             return;
         }
         
@@ -63,25 +63,20 @@ class App {
                 return (new GrowingController(self::$repository))->growAll($array);
             }
         }
-        
         if ($uri[1] == 'harvest') {
-            if (!isset(URI[1]) || $_SERVER['REQUEST_METHOD'] === 'GET') {
-                return (new Controller\Pick)->render();
-            }
-            if (URI[1] == 'all' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
-                return (new Controller\Pick)->pick();
-            }
-            if (URI[1] == 'all/type' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
-                return (new Controller\Pick)->pick();
-            }
-            if (URI[1] == 'bush' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
-                return (new Controller\Pick)->pick();
-            }
-            if (URI[1] == 'bush/part' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
-                return (new Controller\Pick)->pick();
+            $controller = new HarvestingController(self::$repository);
+            if (!isset($uri[2]) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+                $bushObject = json_decode(file_get_contents("php://input"));
+                return $controller->harvest($bushObject);
+            } else if ($uri[2] == 'all' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+                return $controller->harvestAll();
+            } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $bushId = $uri[2];
+                return $controller->harvestBush($bushId);
             }
         }
-        // return include_once __DIR__ . '/pages/notFound.php';
+        
+        return include_once __DIR__ . '/pages/notFound.php';
     }
 
     public static function planting () {

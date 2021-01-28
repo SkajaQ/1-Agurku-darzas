@@ -1,10 +1,18 @@
 <?php
-include __DIR__.'/vendor/autoload.php';
-include __DIR__.'/model/Darzove.php';
-include __DIR__.'/model/Agurkas.php';
-include __DIR__.'/model/Pomidoras.php';
-include __DIR__.'/App.php';
+include __DIR__.'/../vendor/autoload.php';
+include __DIR__.'/../model/Darzove.php';
+include __DIR__.'/../model/Agurkas.php';
+include __DIR__.'/../model/Pomidoras.php';
+include __DIR__.'/../App.php';
+
 App::begin();
+App::harvesting();
+App::loadCurrencies();
+
+$plnRate = $_SESSION['rates']->PLN;
+$krwRate = $_SESSION['rates']->KRW;
+
+
 ?>
 
 <!DOCTYPE html>

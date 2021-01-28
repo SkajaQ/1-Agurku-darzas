@@ -11,16 +11,24 @@ class HarvestingController {
         header('Content-Type: application/json');
     }
  
-    public static function harvest() {
-
+    public function harvest($object) {
+        $darzove = new Agurkas($object->id);
+        $darzove->setKiekis($object->toHarvest);
+        $this->repository->update($darzove);
     }
 
-    public static function harvestBush($id) {
-
+    public function harvestBush($id) {
+        $darzove = new Agurkas($id);
+        $darzove->setKiekis(0);
+        $this->repository->update($darzove);
     }
 
-    public static function harvestAll() {
-
+    public function harvestAll() {
+        $arr = $this->repository->getAll();
+        foreach ($arr as $index => &$darzove) {
+            $darzove->setKiekis(0);
+            $this->repository->update($darzove);
+        }
     }
 
 }

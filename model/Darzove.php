@@ -26,4 +26,3 @@ abstract class Darzove {
     abstract protected function getPrice();
 
 }
-

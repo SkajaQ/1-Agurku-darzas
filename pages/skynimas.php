@@ -1,19 +1,3 @@
-<?php
-include __DIR__.'/../vendor/autoload.php';
-include __DIR__.'/../model/Darzove.php';
-include __DIR__.'/../model/Agurkas.php';
-include __DIR__.'/../model/Pomidoras.php';
-include __DIR__.'/../App.php';
-
-App::begin();
-App::harvesting();
-App::loadCurrencies();
-
-$plnRate = $_SESSION['rates']->PLN;
-$krwRate = $_SESSION['rates']->KRW;
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,21 +24,16 @@ $krwRate = $_SESSION['rates']->KRW;
         <h3 class="plant-ttl">Skynimas</h3>
     </header>
 
-    <main class="plant-main">
+    <main class="harv-main">
         <h1 class="grow-vegname">Agurkai</h1>
         <div class="cucumber-place"></div>
-        <button id="harvestCucumber" type="submit" name="skintiAgurka" class="sodinti btn2-cucumber">Skinti</button>
-        <button id="harvestCucumber" type="submit" name="skintiAgurka" class="sodinti btn2-cucumber">Skinti visą krūmą</button>
-
 
         <h1 class="grow-vegname">Pomidorai</h1>
         <div class="tomatoes-place"></div>
-        <button id="harvestTomato" type="submit" name="skintiPomidora" class="sodinti btn2">Skinti</button>
-        <button id="harvestTomato" type="submit" name="skintiPomidora" class="sodinti btn2">Skinti visą krūmą</button>
 
-        <button type="submit" name="skintiDerliu" class="link btn">Nuimti derlių</button>
+        <button type="submit" name="skintiDerliu" class="link btn harvestAll">Nuimti derlių</button>
     </main>
-
+<!-- 
     <main class="harv-main">
         <form class="form" action="" method="post">
         <h1 class="grow-vegname">Agurkai - <?= $priceCuc ?></h1> 
@@ -81,7 +60,7 @@ $krwRate = $_SESSION['rates']->KRW;
         </div>
         <?php endforeach ?>
 
-        <button type="submit" name="skintiDerliu" class="link btn">Nuimti derliu</button>
+        <button type="submit" name="skintiDerliu" class="link btn">Nuimti derliu</button> -->
         </form>
     </main>
 </body>

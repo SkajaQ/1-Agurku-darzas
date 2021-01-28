@@ -44,7 +44,6 @@ function growListener(idSelector, classSelector) {
             let object = {id: element.name, amount: element.value};
             array.push(object);
         });
-        console.log(array);
         axios({
             method: 'post',
             data: {
