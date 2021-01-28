@@ -1,4 +1,4 @@
-body {
+/* body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -11,7 +11,7 @@ body > header {
     display: inline;
     grid-area: head;
     width: 100%;
-}
+} */
 
 .linkIn {
     text-align: center;
@@ -23,17 +23,16 @@ body > header {
 }
     
 main {
-    display: grid;
-    grid-template-columns: 1fr 1140px 1fr;
-    grid-area: feed;
+    display: inline-block;
+    /* grid-area: feed; */
     text-align: center;
     width: 100%;
 }
 
-body > footer {
+/* body > footer {
     grid-area: footer;
     grid-column: span 1;
-}
+} */
 
 .grow-main {
     padding-left: 100px;
@@ -44,11 +43,13 @@ body > footer {
     background-position: top;
 }
 
-.grow-line {
+.grow-line { 
+    display: flexbox;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 20px;
     margin: 20px;
+    width: 100%;
 }
 
 .grow-vegname {

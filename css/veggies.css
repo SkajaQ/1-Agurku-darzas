@@ -19,3 +19,8 @@
     background-position: left;
     margin: 10px;
 }
+
+.veg-block {
+    display: inline-block;
+    width: 400px;
+}

@@ -18,5 +18,4 @@ class GrowingController {
             $this->repository->update($darzove);
         }
     }
-
 }

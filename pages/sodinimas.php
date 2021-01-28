@@ -25,13 +25,17 @@
     </header>
 
     <main class="plant-main">
-        <h1 class="grow-vegname">Agurkai</h1>
-        <div class="cucumber-place"></div>
-        <button id="plantCucumber" type="submit" name="sodintiAgurka" class="sodinti btn2-cucumber">Sodinti agurką</button>
+        <div class="veg-block">
+            <h1 class="grow-vegname">Agurkai</h1>
+            <div class="cucumber-place"></div>
+            <button id="plantCucumber" type="submit" name="sodintiAgurka" class="sodinti btn2-cucumber">Sodinti agurką</button>
+        </div>
 
-        <h1 class="grow-vegname">Pomidorai</h1>
-        <div class="tomatoes-place"></div>
-        <button id="plantTomato" type="submit" name="sodintiPomidora" class="sodinti btn2">Sodinti pomidorą</button>
+        <div class="veg-block">
+            <h1 class="grow-vegname">Pomidorai</h1>
+            <div class="tomatoes-place"></div>
+            <button id="plantTomato" type="submit" name="sodintiPomidora" class="sodinti btn2">Sodinti pomidorą</button>
+        </div>
     </main>
 
 </body>
