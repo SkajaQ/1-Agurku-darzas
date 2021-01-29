@@ -5,7 +5,8 @@
 ### My first project in PHP - simpliest game-like project
 
 ## Project features
-- HTML, CSS, PHP
+- HTML, PHP
+- minimal CSS
 - multi-page
 - database fundamentals
 
